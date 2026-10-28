@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using DungeonEscape.Characters;
 using DungeonEscape.Interaction;
@@ -43,5 +44,22 @@ namespace DungeonEscape.Guards
 
         /// <summary>Diyalog sistemi konusma basladiginda/bittiginde bildirir.</summary>
         public void SetTalking(bool talking) => IsTalking = talking;
+
+        /// <summary>Kapiyi actiktan sonra yolu acmak icin yana cekilir.</summary>
+        public void StepAside(Vector2 offset, float duration = 0.6f) => StartCoroutine(Slide(offset, duration));
+
+        private IEnumerator Slide(Vector2 offset, float duration)
+        {
+            Vector2 start = transform.position;
+            for (float t = 0f; t < duration; t += Time.deltaTime)
+            {
+                var position = Vector2.Lerp(start, start + offset, t / duration);
+                _animator.SetMotion(offset, Time.deltaTime);
+                transform.position = position;
+                yield return null;
+            }
+            transform.position = start + offset;
+            _animator.Face(Vector2.down);
+        }
     }
 }
