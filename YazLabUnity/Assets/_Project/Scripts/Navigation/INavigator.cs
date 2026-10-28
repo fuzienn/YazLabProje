@@ -14,6 +14,9 @@ namespace DungeonEscape.Navigation
         bool HasArrived(float tolerance);
         void Stop();
 
+        /// <summary>Ajani yol hesaplamadan verilen NavMesh noktasina tasir (test/olcum baslangici).</summary>
+        bool Teleport(Vector2 point);
+
         /// <summary>Hedefe NavMesh uzerindeki yolun uzunlugu. Ulasilamiyorsa false.</summary>
         bool TryGetPathLength(Vector2 target, out float length);
 

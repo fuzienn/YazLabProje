@@ -75,6 +75,13 @@ namespace DungeonEscape.Navigation
             _agent.ResetPath();
         }
 
+        public bool Teleport(Vector2 point)
+        {
+            if (!IsReady || !TrySnap(point, 1f, out var snapped)) return false;
+            _agent.ResetPath();
+            return _agent.Warp(snapped);
+        }
+
         public bool TryGetPathLength(Vector2 target, out float length)
         {
             length = float.MaxValue;

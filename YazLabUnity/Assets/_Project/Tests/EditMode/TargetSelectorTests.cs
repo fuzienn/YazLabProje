@@ -22,6 +22,7 @@ namespace DungeonEscape.Tests
             public bool SetDestination(Vector2 target) => true;
             public bool HasArrived(float tolerance) => true;
             public void Stop() { }
+            public bool Teleport(Vector2 point) => true;
 
             public bool TryGetPathLength(Vector2 target, out float length) =>
                 PathLengths.TryGetValue(target, out length);
