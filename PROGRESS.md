@@ -69,12 +69,12 @@
 - [x] Ollama modelini indir ve terminalden JSON şemalı test isteği at (gemma3:4b seçildi; `format` şeması her yanıtta geçerli JSON verdi)
 
 ### Bölüm 1: Harita (Tilemap) · Sahip: dikmenomer33
-- [ ] Kapı sayfası (`doors_lever_chest_animation.png`) otomatik dilimde birleşiyor: kapılar için 32x32 ızgara dilimi ayarla
-- [ ] Tile Palette ve kural tile'ları (duvar/zemin)
-- [ ] Hücre odası + parmaklıklı kapı + farenin geçidi (duvarda çatlak/delik)
-- [ ] Koridor, muhafız salonu, spawn bölgeleri, çıkış kapısı ve gardiyan odası
-- [ ] Duvar collider'ları (TilemapCollider2D + CompositeCollider2D), sorting layer'lar
-- [ ] Dekor: meşale (ışık), fıçılar, kafes
+- [x] Kapı sayfası 32x32 dilimlendi (`door_grate_*`, `door_wood_*`, `chest_*`, `lever_*`); ateş sayfası sabit karelerle (`brazier_*`, `torch_*`)
+- [x] Karo seçimi: `TileTheme` (zemin 4 varyant, duvar tepe/üst yüz/alt yüz). Tile Palette yerine ASCII harita + `Dungeon Escape/Build Level 01` menüsü (`LevelBuilder`)
+- [x] Hücre odası + parmaklıklı kapı + farenin geçidi (`r` tüneli, `rat_hole.png`)
+- [x] Koridor, muhafız salonu, spawn bölgeleri (`g`), çıkış kapısı ve gardiyan odası (`Tiles/level01.txt`)
+- [x] Duvar collider'ları (TilemapCollider2D + CompositeCollider2D), sıralama: zemin -10, karakter 0, duvar 10, kapı 11
+- [x] Dekor: animasyonlu mangal + Light2D (fıçı/kafes Bölüm 6 cilaya taşındı)
 
 ### Bölüm 2: Oyuncu ve Çekirdek Sistemler · Sahip: fuzienn
 - [ ] `PlayerController` (Input System, Rigidbody2D, 4 yön animasyon)
@@ -112,6 +112,7 @@
 ### Bölüm 6: Oyun Akışı ve Cila · Sahip: fuzienn
 - [ ] Ana menü, durdurma menüsü, kazanma/kaybetme ekranları
 - [ ] Görev ipuçları (HUD: "Fareye F ile emir ver" vb.)
+- [ ] Dekor: fıçı, sandık, kafes (`Objects.png`)
 - [ ] Ses efektleri (opsiyonel), kapı/meşale animasyonları
 - [ ] Tam akış uçtan uca oynanabilir
 
@@ -143,3 +144,4 @@
 | 2026-10-28 | Geçmiş temizlendi (420 MB → 77 KB), feature dalı main'e ff edildi, gitignore düzeltildi, plan push'landı | Bölüm 0: paketler + 2D renderer |
 | 2026-10-28 | Paketler (NavMeshPlus 0.2.23, AI Navigation 2.0.16, 2D Sprite/Tilemap), URP 2D Renderer, Main sahnesi, `ArtImportProcessor`, karakter sprite'ları, asmdef'ler (`DungeonEscape.Runtime/Editor`) | Ollama modeli, sonra Bölüm 1 |
 | 2026-10-28 | Model karşılaştırması: gemma3:4b seçildi. Bölüm 0 tamam | Bölüm 1 (kapı dilimi, harita) |
+| 2026-10-28 | Bölüm 1 tamam: ASCII harita ayrıştırıcı (`LevelLayout`), `LevelBuilder` editör aracı, Main sahnesinde Level 01 | Bölüm 2 (oyuncu) |
