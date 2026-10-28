@@ -133,15 +133,15 @@
 - [x] Diyalog senaryoları (`DialogueScenarioRunner`, 7 senaryo + korkutma ×5) → `Docs/test_results/dialogues.md`. Son koşu: korkutma 5/5 (4 tur), hakaret → saldırı, enjeksiyon engellendi, rüşvet/alakasız/anlamsız kapı açmadı; sınırlılık: kibar rica 3 turda açtı
 - [x] Sunucu kapalıyken ekran görüntüsü (`Docs/screenshots/llm_sunucu_kapali.png`), gerçek model diyaloğu (`llm_diyalog.png`)
 
-### Bölüm 8: Build ve Rapor · Ortak (bölümler sahiplerine göre)
-- [ ] macOS build (ve mümkünse Windows)
-- [ ] README: giriş, senaryo, mimari (sınıf diyagramı)
-- [ ] Mermaid: fare FSM durum diyagramı + karar akışı
-- [ ] Mermaid: LLM sequence diyagramı, sistem promptu, JSON şeması
-- [ ] Hata yönetimi stratejisi bölümü
-- [ ] Ekran görüntüleri, test sonuçları, örnek diyaloglar
-- [ ] Sonuç ve tartışma; model seçim gerekçesi
-- [ ] Teslim zip'i: kod + build + rapor
+### Bölüm 8: Build ve Rapor · Ortak (giriş/mimari/fare/muhafız/test/sonuç: fuzienn, LLM/hata yönetimi: dikmenomer33)
+- [x] macOS build (`YazLabUnity/Builds/macOS/ZindandanKacis.app`, 75 MB, başsız çalıştırma ile doğrulandı). Windows: Unity Hub'da "Windows Build Support (Mono)" modülü kurulu değil
+- [x] README: giriş, senaryo, kurulum, mimari (sınıf diyagramı, SOLID tablosu)
+- [x] Mermaid: fare FSM durum diyagramı + yaklaşma karar akışı + GameFlow durum diyagramı
+- [x] Mermaid: LLM sequence diyagramı, sistem promptu, JSON şeması, koruma katmanları
+- [x] Hata yönetimi stratejisi bölümü (tablo)
+- [x] Ekran görüntüleri, test sonuçları, örnek diyaloglar
+- [x] Sonuç ve tartışma; model seçim gerekçesi
+- [ ] Teslim zip'i: kod + build + rapor (`YazLabProje_Teslim.zip`, proje kökünde, gitignore'da). Son sürüm teslimden hemen önce yeniden üretilmeli
 
 ### Bölüm 9 (Bonus +10): ML-Agents · İsteğe bağlı
 - [ ] Fare için RL ortamı, ödül fonksiyonu, eğitim, TensorBoard ödül grafiği
@@ -161,3 +161,4 @@
 | 2026-10-28 | Bölüm 5 tamam. Gerçek model denemesi: 4 turda korku 72 → OPEN_DOOR; 3. turda ATTACK korku kuralıyla reddedildi; yanıt 2-3 sn. Unity 6 düz HTTP engeli bulundu ve açıldı | Bölüm 6 (UI/cila) |
 | 2026-10-29 | Bölüm 6 tamam (Ömer adına): Türkçe metinler, HUD, başlık/duraklatma/sonuç ekranları, Rebuild Scene. EditMode 41/41, PlayMode 26/26 | Bölüm 7 (ölçümler) |
 | 2026-10-29 | Bölüm 7 tamam (Hüseyin). Senaryo koşucusu prompt enjeksiyonu açığını buldu → `ManipulationGuard`. Hakaret/tehdit ayrımı prompt'a eklendi, saldırı sınırı 40→30 | Bölüm 8 (build + README) |
+| 2026-10-29 | Build + README tamam. Kalan: elle tam oynanış, teslim zip'i, (isteğe bağlı) Windows build ve ML-Agents bonusu | Teslim hazırlığı |
