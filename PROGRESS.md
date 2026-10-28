@@ -50,15 +50,16 @@
 - **Asset'ler:** `free-2d-top-down-pixel-dungeon-asset-pack` (craftpix, 16px) ana tileset. Duvar, zemin, parmaklıklı/ahşap kapı animasyonu, anahtar, şalter, sandık.
   `2ddungeonassetpackwithoutoutline` (CC0, 2048px) yalnızca UI ikonları için (anahtar, iksir).
   **Eksik:** karakter sprite'ları (oyuncu, fare, muhafız). Bunlar Bölüm 0'da çözülecek.
-- **Git:** `git@github.com:fuzienn/YazLabProje.git`. İki SSH hesabı: `github.com` → fuzienn, `github-ikinci` → dikmenomer33.
+- **Git:** `git@github.com:fuzienn/YazLabProje.git`. İki SSH hesabı: `github.com` → fuzienn (Hüseyin Melih Güzel), `github-ikinci` → dikmenomer33 (Ömer Alp Dikmen, `349348461+dikmenomer33@users.noreply.github.com`).
+  Library geçmişten silindi (filter-branch, force push 2026-10-28). Eski 420 MB'lık klonlar kullanılmamalı.
   Commit'ler bölüm sahibine göre yazar kimliğiyle atılır (aşağıdaki "Sahip" sütunu).
 
 ## Bölümler
 
 ### Bölüm 0: Altyapı · Sahip: fuzienn
-- [ ] Yerel klasörü uzak repoyla birleştir (`main` + `feature/ai-integration` geçmişi korunarak)
-- [ ] `.gitignore`'u `YazLabUnity/Library`, `Temp`, `Logs`, `UserSettings`, `Builds` için düzelt. Library'yi index'ten çıkar
-- [ ] Ham asset klasörlerini repoya alma (sadece kullanılanlar `Assets/Art` altına)
+- [x] Yerel klasörü uzak repoyla birleştir (`main` + `feature/ai-integration` geçmişi korunarak)
+- [x] `.gitignore`'u `YazLabUnity/Library`, `Temp`, `Logs`, `UserSettings`, `Builds` için düzelt. Library'yi index'ten çıkar
+- [x] Ham asset klasörlerini repoya alma (sadece kullanılanlar `Assets/Art` altına)
 - [ ] Paketler: `com.unity.ai.navigation`, NavMeshPlus, `com.unity.2d.sprite`, `com.unity.2d.tilemap`, Test Framework
 - [ ] URP 2D Renderer'a geç, `Main` sahnesini oluştur, SampleScene'i kaldır
 - [ ] Klasör yapısı: `Assets/_Project/{Scripts,Art,Prefabs,Scenes,Tiles,Tests}`
@@ -137,3 +138,4 @@
 | Tarih | Yapılan | Sıradaki |
 |---|---|---|
 | 2026-10-28 | Ödev analizi, tasarım ve plan yazıldı. Unity MCP bağlı. Uzak repo incelendi: Library yanlışlıkla commit'lenmiş, `feature/ai-integration`'da ilk Ollama istemcisi var | Bölüm 0 |
+| 2026-10-28 | Geçmiş temizlendi (420 MB → 77 KB), feature dalı main'e ff edildi, gitignore düzeltildi, plan push'landı | Bölüm 0: paketler + 2D renderer |
