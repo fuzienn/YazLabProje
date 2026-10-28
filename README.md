@@ -188,3 +188,102 @@ classDiagram
 | Arayüz ayrımı | `IKeyHolder`, `IInteractable`, `IGuard`, `ICommandable` küçük ve amaca özel arayüzlerdir |
 | Bağımlılığın tersine çevrilmesi | `DialogueSession` somut Ollama'yı değil `ILLMClient`'ı, fare somut NavMeshAgent'ı değil `INavigator`'ı bilir |
 | Gevşek bağlılık | Bileşenler birbirini değil `GameEvents` olay yolunu dinler (kapı açıldı, anahtar teslim edildi, oyun bitti) |
+
+## 4. Otonom AI Kahraman: Fare
+
+![Fare görevde](Docs/screenshots/fare_gorevde.png)
+
+### 4.1. Yol bulma: NavMesh
+
+2D harita için [NavMeshPlus](https://github.com/h8man/NavMeshPlus) kullanıldı. NavMesh, sahne açılırken `NavMeshRuntimeBaker` tarafından çalışma anında pişirilir (harita küçük olduğundan birkaç milisaniye sürer).
+
+| Ajan tipi | Yarıçap | Kullanabildiği alanlar |
+|---|---|---|
+| `Rat` | 0,15 | Walkable + **RatTunnel** |
+| `Guard` | 0,30 | Yalnızca Walkable (tünel alan maskesinde kapalı) |
+
+Hücrenin kuzey duvarındaki tünel, Tilemap'te ayrı bir katmandır. NavMesh'te `RatTunnel` alanı olarak işaretlenir ve oyuncu için katı bir collider'dır. Böylece:
+
+- Fare hücreden salona **yalnızca tünelden** gider. Kapalı kapı hücreleri NavMesh'te yürünemez.
+- Muhafızlar hücreye giremez (`PathPartial`).
+- Oyuncu tünelden geçemez (bkz. `PlayerEscapeTests.RatTunnel_BlocksPlayer`).
+
+Fare tünelin içindeyken duvar karoları farenin üstünde çizilir; fare oyuncunun gözünden kaybolur ve diğer uçtan çıkar.
+
+### 4.2. Algılama: ışın sensörü
+
+`RaySensor2D` her 0,1 saniyede farenin çevresine 16 eşit aralıklı ışın (`Physics2D.Raycast`, 3 m) gönderir. Her ışın, `Walls` ve `Guards` katmanlarına çarpma **mesafesini** ve **açısını** ölçer. Fare bu ölçümleri şunlar için kullanır:
+
+- **Hedef menzilde mi?** Işınlardan biri hedef muhafıza 0,75 m içinde çarpıyorsa çalma başlar. Demetin arasında kalan hedefler için doğrudan görüş hattı ışını da atılır.
+- **En yakın engel:** Hangi yönde ne kadar boşluk olduğu (gizmo ile kırmızı/yeşil çizilir).
+
+Muhafızın fareyi görüp görmediği ise muhafızın kendi görüş konisiyle (`IGuard.CanSee`) hesaplanır. Koni de ışınlarla duvarlarda kırpılır.
+
+### 4.3. Hedef seçimi
+
+`NearestByPathSelector`, anahtarı olan ve etkin her muhafız için `NavMesh.CalculatePath` ile **yol uzunluğunu** hesaplar ve en kısasını seçer. Kuş uçuşu mesafe kullanılmaz: duvarın hemen arkasındaki muhafız yakın görünse de tünelden dolaşmak gerektiği için uzak olabilir (`TargetSelectorTests.PicksShortestPath_NotStraightLineDistance`).
+
+### 4.4. Karar mantığı: sonlu durum makinesi
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> SelectTarget: F komutu (anahtar yoksa)
+    SelectTarget --> Approach: hedef seçildi
+    SelectTarget --> Idle: ulaşılabilir anahtarlı muhafız yok
+    Approach --> Hide: muhafız fareyi görebilir ve < 4 m
+    Hide --> Approach: 0,4 sn görüş dışında
+    Approach --> Steal: sensör hedefi ≤ 0,75 m'de algıladı
+    Approach --> SelectTarget: hedef etkisiz / anahtarı yok
+    Steal --> Return: anahtar alındı (0,5 sn)
+    Steal --> SelectTarget: anahtar alınamadı
+    Return --> Deliver: oyuncuya ≤ 0,9 m
+    Deliver --> Idle: anahtar oyuncuya geçti
+    Approach --> Return: 60 sn zaman aşımı (anahtar fareyse)
+```
+
+Her durum ayrı bir `IState` sınıfıdır (`Companion/States/`). Geçişler yalnızca `StateMachine.ChangeState` ile yapılır. Bir durumun `Enter`'ı içinden istenen geçiş sıraya alınır, böylece olaylar doğru sırayla yayınlanır.
+
+Yaklaşma adımının ayrıntılı akışı:
+
+```mermaid
+flowchart TD
+    T[Her kare: Approach.Tick] --> A{Hedef etkin ve<br/>anahtarı var mı?}
+    A -- hayır --> S[SelectTarget]
+    A -- evet --> B{Sensör ışını hedefe<br/>≤ 0,75 m çarpıyor mu?}
+    B -- evet --> ST[Steal]
+    B -- hayır --> C{Muhafız fareyi görebilir mi<br/>ve mesafe < 4 m?}
+    C -- evet --> H[Hide: dur ve bekle]
+    C -- hayır --> D[Muhafızın baktığı yönün<br/>0,5 m gerisini NavMesh'e oturt]
+    D --> E[0,3 sn'de bir SetDestination]
+```
+
+### 4.5. Görev raporu
+
+Her görev bir `RatMissionReport` üretir: başarı, süre, hedefe yol uzunluğu, saklanma sayısı ve başarısızlık nedeni. Test ve ölçümler bu raporu kullanır (bkz. [8.2](#82-fare-ölçümü-50-farklı-başlangıç)).
+
+## 5. Muhafızlar ve Oyun Akışı
+
+![Muhafızların görüş konileri](Docs/screenshots/muhafiz_gorus_konileri.png)
+
+- **Yerleşim:** `GuardSpawner`, 6 aday noktadan seed'li rastgelelikle 3 tanesini seçer ve noktanın 1,2 m çevresinde NavMesh üzerinde bir yere, birbirine en az 2,5 m uzaklıkta yerleştirir. Aynı seed her zaman aynı yerleşimi verir (`GuardTests.SameSeed_GivesSameLayout`). Oyunda seed her seferinde değişir.
+- **Davranış:** Her muhafızın kendi durum makinesi vardır: `LookAround` (2-3 kez rastgele yöne bakar) ⇄ `Patrol` (evinin 3 m çevresinde ulaşılabilir rastgele noktaya yürür) → `Neutralized`.
+- **Görüş:** 4 m menzil, 90° açı, duvar engeli. Koni oyunda yarı saydam görünür; oyuncuyu görünce kırmızıya döner.
+- **Yakalanma:** Hücre kapısı açıldıktan sonra bir muhafız oyuncuyu 0,6 sn kesintisiz görürse oyun kaybedilir.
+- **Etkisiz hâle getirme:** Oyuncu muhafızın arkasından (bakış yönüyle ≥ 110°, ≤ 1,1 m) yaklaşıp `E`'ye basar. Önden yaklaşırsa ekranda "Arkasından yaklaş!" yazar.
+- **Gardiyan:** Çıkış kapısının önünde durur, `IGuard` değildir (fare onu hedef almaz). Tüm muhafızlar etkisiz kalınca konuşmaya açılır.
+
+Oyunun üst düzey akışı (`GameFlow`):
+
+```mermaid
+stateDiagram-v2
+    [*] --> InCell
+    InCell --> Escaping: hücre kapısı açıldı
+    Escaping --> Dialogue: gardiyanla konuşma başladı
+    Dialogue --> Escaping: Esc / kapı açıldıktan sonra panel kapandı
+    Escaping --> Won: açık çıkış kapısından geçildi
+    Escaping --> Lost: muhafız 0,6 sn gördü
+    Dialogue --> Lost: gardiyan saldırdı (ATTACK)
+    Won --> [*]
+    Lost --> [*]: R ile yeniden başla
+```
