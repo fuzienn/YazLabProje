@@ -15,8 +15,7 @@ namespace DungeonEscape.Editor
     {
         private const string SettingsPath = "Assets/_Project/Settings/OllamaSettings.asset";
         private static readonly Color PanelColor = new(0.08f, 0.06f, 0.11f, 0.92f);
-        private static readonly Color TextColor = new(0.95f, 0.92f, 0.85f);
-
+        
         [MenuItem("Dungeon Escape/Setup Dialogue")]
         public static void Setup()
         {
@@ -66,37 +65,37 @@ namespace DungeonEscape.Editor
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1280, 720);
 
-            var panel = Rect("Panel", canvasGo.transform, new Vector2(0, 0), new Vector2(1, 0), new Vector2(40, 30), new Vector2(-40, 400));
+            var panel = UiFactory.Rect("Panel", canvasGo.transform, new Vector2(0, 0), new Vector2(1, 0), new Vector2(40, 30), new Vector2(-40, 400));
             panel.gameObject.AddComponent<Image>().color = PanelColor;
 
-            Label("Title", panel, "Gardiyan Bertan", 26, TextAnchor.UpperLeft, new Vector2(0, 1), new Vector2(0.5f, 1), new Vector2(20, -46), new Vector2(0, -12));
-            var fearLabel = Label("FearLabel", panel, "", 18, TextAnchor.UpperRight, new Vector2(0.5f, 1), new Vector2(1, 1), new Vector2(0, -36), new Vector2(-20, -12));
-            var fearBack = Rect("FearBar", panel, new Vector2(0.55f, 1), new Vector2(1, 1), new Vector2(0, -58), new Vector2(-20, -42));
+            UiFactory.Label("Title", panel, "Gardiyan Bertan", 26, TextAnchor.UpperLeft, new Vector2(0, 1), new Vector2(0.5f, 1), new Vector2(20, -46), new Vector2(0, -12));
+            var fearLabel = UiFactory.Label("FearLabel", panel, "", 18, TextAnchor.UpperRight, new Vector2(0.5f, 1), new Vector2(1, 1), new Vector2(0, -36), new Vector2(-20, -12));
+            var fearBack = UiFactory.Rect("FearBar", panel, new Vector2(0.55f, 1), new Vector2(1, 1), new Vector2(0, -58), new Vector2(-20, -42));
             fearBack.gameObject.AddComponent<Image>().color = new Color(0.2f, 0.18f, 0.25f);
-            var fearFill = Rect("Fill", fearBack, Vector2.zero, new Vector2(0.15f, 1), Vector2.zero, Vector2.zero);
+            var fearFill = UiFactory.Rect("Fill", fearBack, Vector2.zero, new Vector2(0.15f, 1), Vector2.zero, Vector2.zero);
             var fearImage = fearFill.gameObject.AddComponent<Image>();
 
-            var scrollRect = Rect("Log", panel, new Vector2(0, 0), new Vector2(1, 1), new Vector2(20, 110), new Vector2(-20, -70));
+            var scrollRect = UiFactory.Rect("Log", panel, new Vector2(0, 0), new Vector2(1, 1), new Vector2(20, 110), new Vector2(-20, -70));
             scrollRect.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.25f);
             scrollRect.gameObject.AddComponent<RectMask2D>();
             var scroll = scrollRect.gameObject.AddComponent<ScrollRect>();
             scroll.horizontal = false;
             scroll.movementType = ScrollRect.MovementType.Clamped;
-            var content = Rect("Content", scrollRect, new Vector2(0, 1), new Vector2(1, 1), new Vector2(10, 0), new Vector2(-10, 0));
+            var content = UiFactory.Rect("Content", scrollRect, new Vector2(0, 1), new Vector2(1, 1), new Vector2(10, 0), new Vector2(-10, 0));
             content.pivot = new Vector2(0.5f, 1f);
             content.gameObject.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             var log = content.gameObject.AddComponent<Text>();
-            Style(log, 21, TextAnchor.UpperLeft);
+            UiFactory.Style(log, 21, TextAnchor.UpperLeft);
             log.supportRichText = true;
             scroll.content = content;
             scroll.viewport = scrollRect;
 
-            var thinking = Label("Thinking", panel, "Gardiyan düşünüyor...", 20, TextAnchor.MiddleLeft, new Vector2(0, 0), new Vector2(0.6f, 0), new Vector2(20, 72), new Vector2(0, 104));
+            var thinking = UiFactory.Label("Thinking", panel, "Gardiyan düşünüyor...", 20, TextAnchor.MiddleLeft, new Vector2(0, 0), new Vector2(0.6f, 0), new Vector2(20, 72), new Vector2(0, 104));
             thinking.fontStyle = FontStyle.Italic;
             thinking.color = new Color(1f, 0.8f, 0.45f);
-            var error = Label("Error", panel, "", 17, TextAnchor.MiddleLeft, new Vector2(0, 0), new Vector2(1, 0), new Vector2(20, 66), new Vector2(-20, 108));
+            var error = UiFactory.Label("Error", panel, "", 17, TextAnchor.MiddleLeft, new Vector2(0, 0), new Vector2(1, 0), new Vector2(20, 66), new Vector2(-20, 108));
             error.color = new Color(1f, 0.45f, 0.4f);
-            Label("Hint", panel, "Enter: gönder   Esc: konuşmayı bitir", 15, TextAnchor.MiddleRight, new Vector2(0.6f, 0), new Vector2(1, 0), new Vector2(0, 72), new Vector2(-20, 104));
+            UiFactory.Label("Hint", panel, "Enter: gönder   Esc: konuşmayı bitir", 15, TextAnchor.MiddleRight, new Vector2(0.6f, 0), new Vector2(1, 0), new Vector2(0, 72), new Vector2(-20, 104));
 
             var input = BuildInput(panel);
             var send = BuildButton(panel, "Gönder");
@@ -108,14 +107,14 @@ namespace DungeonEscape.Editor
 
         private static InputField BuildInput(RectTransform panel)
         {
-            var rect = Rect("Input", panel, new Vector2(0, 0), new Vector2(1, 0), new Vector2(20, 18), new Vector2(-180, 62));
+            var rect = UiFactory.Rect("Input", panel, new Vector2(0, 0), new Vector2(1, 0), new Vector2(20, 18), new Vector2(-180, 62));
             rect.gameObject.AddComponent<Image>().color = new Color(0.16f, 0.14f, 0.2f);
             var input = rect.gameObject.AddComponent<InputField>();
 
-            var placeholder = Label("Placeholder", rect, "Gardiyana ne söyleyeceksin?", 20, TextAnchor.MiddleLeft, Vector2.zero, Vector2.one, new Vector2(12, 0), new Vector2(-12, 0));
+            var placeholder = UiFactory.Label("Placeholder", rect, "Gardiyana ne söyleyeceksin?", 20, TextAnchor.MiddleLeft, Vector2.zero, Vector2.one, new Vector2(12, 0), new Vector2(-12, 0));
             placeholder.fontStyle = FontStyle.Italic;
             placeholder.color = new Color(1f, 1f, 1f, 0.35f);
-            var text = Label("Text", rect, "", 20, TextAnchor.MiddleLeft, Vector2.zero, Vector2.one, new Vector2(12, 0), new Vector2(-12, 0));
+            var text = UiFactory.Label("Text", rect, "", 20, TextAnchor.MiddleLeft, Vector2.zero, Vector2.one, new Vector2(12, 0), new Vector2(-12, 0));
             text.supportRichText = false;
 
             input.textComponent = text;
@@ -127,42 +126,11 @@ namespace DungeonEscape.Editor
 
         private static Button BuildButton(RectTransform panel, string caption)
         {
-            var rect = Rect("Send", panel, new Vector2(1, 0), new Vector2(1, 0), new Vector2(-170, 18), new Vector2(-20, 62));
+            var rect = UiFactory.Rect("Send", panel, new Vector2(1, 0), new Vector2(1, 0), new Vector2(-170, 18), new Vector2(-20, 62));
             rect.gameObject.AddComponent<Image>().color = new Color(0.55f, 0.32f, 0.18f);
             var button = rect.gameObject.AddComponent<Button>();
-            Label("Caption", rect, caption, 21, TextAnchor.MiddleCenter, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+            UiFactory.Label("Caption", rect, caption, 21, TextAnchor.MiddleCenter, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
             return button;
-        }
-
-        private static RectTransform Rect(string name, Transform parent, Vector2 anchorMin, Vector2 anchorMax, Vector2 offsetMin, Vector2 offsetMax)
-        {
-            var go = new GameObject(name, typeof(RectTransform));
-            go.transform.SetParent(parent, false);
-            var rect = (RectTransform)go.transform;
-            rect.anchorMin = anchorMin;
-            rect.anchorMax = anchorMax;
-            rect.offsetMin = offsetMin;
-            rect.offsetMax = offsetMax;
-            return rect;
-        }
-
-        private static Text Label(string name, Transform parent, string content, int size, TextAnchor anchor,
-            Vector2 anchorMin, Vector2 anchorMax, Vector2 offsetMin, Vector2 offsetMax)
-        {
-            var text = Rect(name, parent, anchorMin, anchorMax, offsetMin, offsetMax).gameObject.AddComponent<Text>();
-            Style(text, size, anchor);
-            text.text = content;
-            return text;
-        }
-
-        private static void Style(Text text, int size, TextAnchor anchor)
-        {
-            text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            text.fontSize = size;
-            text.alignment = anchor;
-            text.color = TextColor;
-            text.horizontalOverflow = HorizontalWrapMode.Wrap;
-            text.verticalOverflow = VerticalWrapMode.Overflow;
         }
     }
 }
