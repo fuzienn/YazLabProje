@@ -25,6 +25,8 @@ namespace DungeonEscape.Core
         public LoseReason? LastLoseReason { get; private set; }
         public bool IsOver => Phase is GamePhase.Won or GamePhase.Lost;
 
+        public float ElapsedTime => Time.timeSinceLevelLoad;
+
         public event Action<GamePhase> PhaseChanged;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -62,6 +64,7 @@ namespace DungeonEscape.Core
 
         public void Restart()
         {
+            Time.timeScale = 1f;
             GameEvents.Reset();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

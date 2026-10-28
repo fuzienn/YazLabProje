@@ -63,7 +63,8 @@ namespace DungeonEscape.Companion
         internal RatDeliverState Deliver { get; private set; }
 
         public string StateName => _machine.Current?.Name ?? "-";
-        public string Status { get; private set; } = "Fare hazir. F: anahtari getir";
+        public bool IsOnMission => _onMission;
+        public string Status { get; private set; } = "Fare hazır. F: anahtarı getir";
 
         public event Action<RatMissionReport> MissionFinished;
         public event Action<string> StatusChanged;
@@ -108,7 +109,7 @@ namespace DungeonEscape.Companion
         {
             if (!CanAcceptCommand)
             {
-                SetStatus(_onMission ? "Fare zaten gorevde." : "Anahtar zaten elinde.");
+                SetStatus(_onMission ? "Fare zaten görevde." : "Anahtar zaten elinde.");
                 return;
             }
             _onMission = true;
@@ -128,7 +129,7 @@ namespace DungeonEscape.Companion
             }
 
             if (_onMission && Time.time - _missionStart > missionTimeout)
-                FailMission("Zaman asimi");
+                FailMission("Zaman aşımı");
 
             _machine.Tick(Time.deltaTime);
             _animator.SetMotion(Navigator.Velocity, Time.deltaTime);
@@ -146,14 +147,14 @@ namespace DungeonEscape.Companion
         internal void CompleteMission()
         {
             FinishMission(true, null);
-            SetStatus("Fare anahtari getirdi!");
+            SetStatus("Fare anahtarı getirdi!");
             ChangeState(Idle);
         }
 
         internal void FailMission(string reason)
         {
             FinishMission(false, reason);
-            SetStatus($"Fare basaramadi: {reason}");
+            SetStatus($"Fare başaramadı: {reason}");
             Target = null;
             // Anahtar fareyle kaldiysa yine de oyuncuya goturur
             ChangeState(Keys.HasKey(keyId) ? Return : Idle);
