@@ -60,14 +60,15 @@
 - [x] Yerel klasörü uzak repoyla birleştir (`main` + `feature/ai-integration` geçmişi korunarak)
 - [x] `.gitignore`'u `YazLabUnity/Library`, `Temp`, `Logs`, `UserSettings`, `Builds` için düzelt. Library'yi index'ten çıkar
 - [x] Ham asset klasörlerini repoya alma (sadece kullanılanlar `Assets/Art` altına)
-- [ ] Paketler: `com.unity.ai.navigation`, NavMeshPlus, `com.unity.2d.sprite`, `com.unity.2d.tilemap`, Test Framework
-- [ ] URP 2D Renderer'a geç, `Main` sahnesini oluştur, SampleScene'i kaldır
-- [ ] Klasör yapısı: `Assets/_Project/{Scripts,Art,Prefabs,Scenes,Tiles,Tests}`
-- [ ] Tileset'leri içe aktar ve dilimle (16px, Point filter, PPU 16)
-- [ ] Karakter sprite'larını bul (CC0) veya üret: oyuncu, fare, muhafız, gardiyan
+- [x] Paketler: `com.unity.ai.navigation`, NavMeshPlus, `com.unity.2d.sprite`, `com.unity.2d.tilemap`, Test Framework
+- [x] URP 2D Renderer'a geç, `Main` sahnesini oluştur, SampleScene'i kaldır
+- [x] Klasör yapısı: `Assets/_Project/{Scripts,Art,Prefabs,Scenes,Tiles,Tests}`
+- [x] Tileset'leri içe aktar ve dilimle (16px, Point filter, PPU 16)
+- [x] Karakter sprite'larını bul (CC0) veya üret: oyuncu, fare, muhafız, gardiyan → `Tools/generate_characters.py` ile üretildi (satır: down/up/side, sütun: durus/yurume1/yurume2; sola bakış flipX)
 - [ ] Ollama modelini indir (`ollama pull llama3.2:3b`) ve terminalden JSON şemalı test isteği at
 
 ### Bölüm 1: Harita (Tilemap) · Sahip: dikmenomer33
+- [ ] Kapı sayfası (`doors_lever_chest_animation.png`) otomatik dilimde birleşiyor: kapılar için 32x32 ızgara dilimi ayarla
 - [ ] Tile Palette ve kural tile'ları (duvar/zemin)
 - [ ] Hücre odası + parmaklıklı kapı + farenin geçidi (duvarda çatlak/delik)
 - [ ] Koridor, muhafız salonu, spawn bölgeleri, çıkış kapısı ve gardiyan odası
@@ -139,3 +140,4 @@
 |---|---|---|
 | 2026-10-28 | Ödev analizi, tasarım ve plan yazıldı. Unity MCP bağlı. Uzak repo incelendi: Library yanlışlıkla commit'lenmiş, `feature/ai-integration`'da ilk Ollama istemcisi var | Bölüm 0 |
 | 2026-10-28 | Geçmiş temizlendi (420 MB → 77 KB), feature dalı main'e ff edildi, gitignore düzeltildi, plan push'landı | Bölüm 0: paketler + 2D renderer |
+| 2026-10-28 | Paketler (NavMeshPlus 0.2.23, AI Navigation 2.0.16, 2D Sprite/Tilemap), URP 2D Renderer, Main sahnesi, `ArtImportProcessor`, karakter sprite'ları, asmdef'ler (`DungeonEscape.Runtime/Editor`) | Ollama modeli, sonra Bölüm 1 |
