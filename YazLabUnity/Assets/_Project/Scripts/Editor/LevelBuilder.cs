@@ -53,7 +53,9 @@ namespace DungeonEscape.Editor
 
             PaintTiles(layout, theme, floor, walls, tunnel);
             CreateDoor(root.transform, "CellDoor", layout.GetBounds(CellKind.CellDoor), DoorId.Cell, KeyIds.Cell, "door_grate");
-            CreateDoor(root.transform, "ExitDoor", layout.GetBounds(CellKind.ExitDoor), DoorId.Exit, null, "door_wood");
+            var exitBounds = layout.GetBounds(CellKind.ExitDoor);
+            var exitDoor = CreateDoor(root.transform, "ExitDoor", exitBounds, DoorId.Exit, null, "door_wood");
+            CreateExitZone(exitDoor.transform, exitBounds);
             CreateRatHole(root.transform, layout);
             CreateMarkers(root.transform, layout);
 
@@ -112,7 +114,7 @@ namespace DungeonEscape.Editor
             return tilemap;
         }
 
-        private static void CreateDoor(Transform parent, string name, RectInt bounds, DoorId id, string keyId, string framePrefix)
+        private static GameObject CreateDoor(Transform parent, string name, RectInt bounds, DoorId id, string keyId, string framePrefix)
         {
             var frames = Enumerable.Range(0, 5).Select(i => FindSprite(DoorSheet, $"{framePrefix}_{i}")).ToArray();
             var go = new GameObject(name);
@@ -128,6 +130,16 @@ namespace DungeonEscape.Editor
             go.AddComponent<LockedDoor>().Configure(id, keyId, frames);
             go.layer = LayerMask.NameToLayer(NavigationSetup.WallsLayer);
             NavigationSetup.MarkArea(go, NavAreas.NotWalkableArea);
+            return go;
+        }
+
+        /// <summary>Kapi acilinca etkinlesen, oyuncu girince kazandiran tetik (kapinin alt nesnesi).</summary>
+        private static void CreateExitZone(Transform door, RectInt bounds)
+        {
+            var go = new GameObject("ExitZone");
+            go.transform.SetParent(door, false);
+            go.AddComponent<BoxCollider2D>().size = new Vector2(bounds.width - 0.4f, bounds.height - 0.4f);
+            go.AddComponent<ExitZone>();
         }
 
         private static void CreateRatHole(Transform parent, LevelLayout layout)
