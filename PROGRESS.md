@@ -109,20 +109,21 @@
 - [x] Diyalog UI (`DialogueView`/`IDialogueView`): giriş, geçmiş, "Gardiyan düşünüyor...", korku çubuğu, hata satırı, Esc
 - [x] Oyun durumu: OPEN_DOOR → çıkış kapısı + gardiyan kenara çekilir → `ExitZone` → kazanma; ATTACK → `GameLost(WardenAttacked)`
 
-### Bölüm 6: Oyun Akışı ve Cila · Sahip: fuzienn
-- [ ] Tüm kullanıcıya görünen metinleri Türkçe karakterlerle düzelt ("Kapiyi ac" → "Kapıyı aç" vb.; OllamaClient/DialogueSession hata mesajları dahil)
-- [ ] `Dungeon Escape/Rebuild Scene` menüsü: Build Level → Setup Gameplay → Setup Navigation And Rat → Setup Guards → Setup Dialogue (sıra önemli)
-- [ ] Ana menü, durdurma menüsü, kazanma/kaybetme ekranları
-- [ ] Görev ipuçları (HUD: "Fareye F ile emir ver" vb.)
-- [ ] Dekor: fıçı, sandık, kafes (`Objects.png`)
-- [ ] Ses efektleri (opsiyonel), kapı/meşale animasyonları
-- [ ] Tam akış uçtan uca oynanabilir
+### Bölüm 6: Oyun Akışı ve Cila · Sahip: dikmenomer33 (commit dengesi için fuzienn'den alındı)
+- [x] Tüm kullanıcıya görünen metinler Türkçe karakterli (istemler, fare durumu, hata mesajları, kural notları)
+- [x] `Dungeon Escape/Rebuild Scene` menüsü (`SceneRebuilder`): Level → Gameplay → Navigation+Rat → Guards → Dialogue → HUD
+- [x] Başlık ekranı (hikâye + kontroller, Enter), Esc duraklatma (R/Q), kazanma/kaybetme ekranları (`GameHud`)
+- [x] Görev metni (`ObjectiveText`, aşamaya göre), fare durumu, anahtar göstergesi
+- [ ] (İsteğe bağlı) Dekor: fıçı, sandık, kafes (`Objects.png`) — harita değişirse NavMesh/test konumları etkilenir
+- [ ] (İsteğe bağlı) Ses efektleri. Kapı/mangal animasyonları zaten var
+- [ ] Tam akış elle baştan sona oynanmalı (parçalar testlerle doğrulandı; Unity odaktayken Play ile kullanıcı dener)
 
-### Bölüm 7: Testler · Sahip: dikmenomer33
+### Bölüm 7: Testler · Sahip: ortak (ölçüm aracı + fare ölçümü fuzienn, diyalog senaryoları dikmenomer33)
 - [x] EditMode: `TargetSelectorTests` (yol uzunluğu, anahtarsız/etkisiz/ulaşılamaz muhafız) 5/5
 - [x] PlayMode: `RatMissionTests` (en yakından çalma+teslim, saklanma, muhafız yok, anahtarsızları atlama, çift komut) 5/5
 - [x] EditMode: `DecisionParserTests` (15), `DialogueRulesTests` (7), `DialogueSessionTests` (onarım, hata türleri, tur sınırı) → EditMode toplam 38/38
 - [x] PlayMode: `OllamaIntegrationTests` (yanlış port, yönlendirilemeyen host/timeout, iptal, olmayan model, gerçek model) + `DialogueFlowTests` (kazanma, saldırı, sunucu kapalı) → PlayMode toplam 26/26
+- [x] EditMode: `ObjectiveTextTests` → EditMode toplam 41/41
 - [x] PlayMode: `GuardTests` (aynı seed aynı yerleşim, 10 seed'de ulaşılabilirlik, arkadan/önden etkisizleştirme, yakalanma, hücrede yakalanmama, gardiyan koşulu) 7/7
 - [x] PlayMode: `PlayerEscapeTests` (duvar, tünel, kilitli kapı, anahtarla açma, hücreden çıkış) 6/6 geçti
 - [ ] EditMode: `DecisionParser` (geçerli, bozuk, eksik alan, alan dışı değer, boş)
@@ -157,3 +158,4 @@
 | 2026-10-28 | Bölüm 3 tamam. Düzeltilen hatalar: Awake'te pişirilen NavMesh eklenmiyordu (Start'a alındı); ajan baseOffset'i z'ye kayıp CalculatePath'i bozuyordu; StateMachine iç içe geçişleri sıraya alıyor | Bölüm 4 (muhafızlar) |
 | 2026-10-28 | Bölüm 4 tamam. PlayMode 18/18. Gerçek muhafızlarla seed 7: fare 4.3 sn, yol 5.5 m | Bölüm 5 (LLM gardiyan) |
 | 2026-10-28 | Bölüm 5 tamam. Gerçek model denemesi: 4 turda korku 72 → OPEN_DOOR; 3. turda ATTACK korku kuralıyla reddedildi; yanıt 2-3 sn. Unity 6 düz HTTP engeli bulundu ve açıldı | Bölüm 6 (UI/cila) |
+| 2026-10-29 | Bölüm 6 tamam (Ömer adına): Türkçe metinler, HUD, başlık/duraklatma/sonuç ekranları, Rebuild Scene. EditMode 41/41, PlayMode 26/26 | Bölüm 7 (ölçümler) |
