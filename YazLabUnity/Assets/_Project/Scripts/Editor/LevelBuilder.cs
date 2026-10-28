@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using DungeonEscape.Core;
+using DungeonEscape.Interaction;
 using DungeonEscape.Level;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -46,8 +48,8 @@ namespace DungeonEscape.Editor
             var tunnel = CreateTilemap(grid, "RatTunnel", WallOrder, true);
 
             PaintTiles(layout, theme, floor, walls, tunnel);
-            CreateDoor(root.transform, "CellDoor", layout.GetBounds(CellKind.CellDoor), "door_grate_0");
-            CreateDoor(root.transform, "ExitDoor", layout.GetBounds(CellKind.ExitDoor), "door_wood_0");
+            CreateDoor(root.transform, "CellDoor", layout.GetBounds(CellKind.CellDoor), DoorId.Cell, KeyIds.Cell, "door_grate");
+            CreateDoor(root.transform, "ExitDoor", layout.GetBounds(CellKind.ExitDoor), DoorId.Exit, null, "door_wood");
             CreateRatHole(root.transform, layout);
             CreateMarkers(root.transform, layout);
 
@@ -78,6 +80,15 @@ namespace DungeonEscape.Editor
             floor.CompressBounds();
             walls.CompressBounds();
             tunnel.CompressBounds();
+            RebuildColliders(walls);
+            RebuildColliders(tunnel);
+        }
+
+        /// <summary>Ayni karede boyanan karolar icin collider geometrisini hemen uretir.</summary>
+        private static void RebuildColliders(Tilemap tilemap)
+        {
+            tilemap.GetComponent<TilemapCollider2D>().ProcessTilemapChanges();
+            tilemap.GetComponent<CompositeCollider2D>().GenerateGeometry();
         }
 
         private static Tilemap CreateTilemap(Grid grid, string name, int order, bool solid)
@@ -96,18 +107,20 @@ namespace DungeonEscape.Editor
             return tilemap;
         }
 
-        private static void CreateDoor(Transform parent, string name, RectInt bounds, string spriteName)
+        private static void CreateDoor(Transform parent, string name, RectInt bounds, DoorId id, string keyId, string framePrefix)
         {
+            var frames = Enumerable.Range(0, 5).Select(i => FindSprite(DoorSheet, $"{framePrefix}_{i}")).ToArray();
             var go = new GameObject(name);
             go.transform.SetParent(parent, false);
             go.transform.position = new Vector3(bounds.center.x, bounds.center.y, 0f);
 
             var renderer = go.AddComponent<SpriteRenderer>();
-            renderer.sprite = FindSprite(DoorSheet, spriteName);
+            renderer.sprite = frames[0];
             renderer.sortingOrder = DoorOrder;
 
             var box = go.AddComponent<BoxCollider2D>();
             box.size = new Vector2(bounds.width, bounds.height);
+            go.AddComponent<LockedDoor>().Configure(id, keyId, frames);
         }
 
         private static void CreateRatHole(Transform parent, LevelLayout layout)
