@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d1d25f0d1943a2bcd853b1ee98c26, type: 3}
+  m_Name: rat
+  m_EditorClassIdentifier: DungeonEscape.Runtime::DungeonEscape.Characters.CharacterSpriteSet
+  down:
+  - {fileID: -762923601819242188, guid: 17d7fa279767447e6a82aea26be5630a, type: 3}
+  - {fileID: -8496416989399939983, guid: 17d7fa279767447e6a82aea26be5630a, type: 3}
+  - {fileID: -6553416203325500100, guid: 17d7fa279767447e6a82aea26be5630a, type: 3}
+  up:
+  - {fileID: 8312330359526422519, guid: 17d7fa279767447e6a82aea26be5630a, type: 3}
+  - {fileID: 1251914208362376278, guid: 17d7fa279767447e6a82aea26be5630a, type: 3}
+  - {fileID: 1406525489103273382, guid: 17d7fa279767447e6a82aea26be5630a, type: 3}
+  side:
+  - {fileID: 4630350881165382196, guid: 17d7fa279767447e6a82aea26be5630a, type: 3}
+  - {fileID: -6082894579635398245, guid: 17d7fa279767447e6a82aea26be5630a, type: 3}
+  - {fileID: -1002375209363201687, guid: 17d7fa279767447e6a82aea26be5630a, type: 3}

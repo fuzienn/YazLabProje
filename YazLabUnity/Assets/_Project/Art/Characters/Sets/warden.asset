@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d1d25f0d1943a2bcd853b1ee98c26, type: 3}
+  m_Name: warden
+  m_EditorClassIdentifier: DungeonEscape.Runtime::DungeonEscape.Characters.CharacterSpriteSet
+  down:
+  - {fileID: 8076231884436563968, guid: 7b415b05c90574f2c9c4635b74bd135a, type: 3}
+  - {fileID: 3349300931276629329, guid: 7b415b05c90574f2c9c4635b74bd135a, type: 3}
+  - {fileID: 3660222457361206310, guid: 7b415b05c90574f2c9c4635b74bd135a, type: 3}
+  up:
+  - {fileID: -5262617332191660051, guid: 7b415b05c90574f2c9c4635b74bd135a, type: 3}
+  - {fileID: -4173061675084215205, guid: 7b415b05c90574f2c9c4635b74bd135a, type: 3}
+  - {fileID: 1320992493173597734, guid: 7b415b05c90574f2c9c4635b74bd135a, type: 3}
+  side:
+  - {fileID: 5967170152256128433, guid: 7b415b05c90574f2c9c4635b74bd135a, type: 3}
+  - {fileID: -2656849573946322632, guid: 7b415b05c90574f2c9c4635b74bd135a, type: 3}
+  - {fileID: -8594713977144807645, guid: 7b415b05c90574f2c9c4635b74bd135a, type: 3}

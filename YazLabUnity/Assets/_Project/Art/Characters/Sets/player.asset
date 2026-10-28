@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d1d25f0d1943a2bcd853b1ee98c26, type: 3}
+  m_Name: player
+  m_EditorClassIdentifier: DungeonEscape.Runtime::DungeonEscape.Characters.CharacterSpriteSet
+  down:
+  - {fileID: -3953365634733000360, guid: c00f16b90dce94f9fb97c59b7521d205, type: 3}
+  - {fileID: -1101683894391809678, guid: c00f16b90dce94f9fb97c59b7521d205, type: 3}
+  - {fileID: 2730726551492254631, guid: c00f16b90dce94f9fb97c59b7521d205, type: 3}
+  up:
+  - {fileID: 241396038161257350, guid: c00f16b90dce94f9fb97c59b7521d205, type: 3}
+  - {fileID: -3113793090006235961, guid: c00f16b90dce94f9fb97c59b7521d205, type: 3}
+  - {fileID: 2453498456816594252, guid: c00f16b90dce94f9fb97c59b7521d205, type: 3}
+  side:
+  - {fileID: 2966388318634517685, guid: c00f16b90dce94f9fb97c59b7521d205, type: 3}
+  - {fileID: -8129695340831464982, guid: c00f16b90dce94f9fb97c59b7521d205, type: 3}
+  - {fileID: 153954106392598594, guid: c00f16b90dce94f9fb97c59b7521d205, type: 3}

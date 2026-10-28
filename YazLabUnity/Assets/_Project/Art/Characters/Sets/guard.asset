@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d1d25f0d1943a2bcd853b1ee98c26, type: 3}
+  m_Name: guard
+  m_EditorClassIdentifier: DungeonEscape.Runtime::DungeonEscape.Characters.CharacterSpriteSet
+  down:
+  - {fileID: 4256731748549312519, guid: 603c4ba0982ca4dcdbdc547775366883, type: 3}
+  - {fileID: 3729055228873144239, guid: 603c4ba0982ca4dcdbdc547775366883, type: 3}
+  - {fileID: -7971109766451423862, guid: 603c4ba0982ca4dcdbdc547775366883, type: 3}
+  up:
+  - {fileID: -2192111373798851980, guid: 603c4ba0982ca4dcdbdc547775366883, type: 3}
+  - {fileID: 6206840497598065198, guid: 603c4ba0982ca4dcdbdc547775366883, type: 3}
+  - {fileID: 5481102546028309319, guid: 603c4ba0982ca4dcdbdc547775366883, type: 3}
+  side:
+  - {fileID: 794540673559215510, guid: 603c4ba0982ca4dcdbdc547775366883, type: 3}
+  - {fileID: -8321228407718720156, guid: 603c4ba0982ca4dcdbdc547775366883, type: 3}
+  - {fileID: 8973902434062140937, guid: 603c4ba0982ca4dcdbdc547775366883, type: 3}
