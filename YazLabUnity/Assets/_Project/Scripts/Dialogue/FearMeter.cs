@@ -9,7 +9,7 @@ namespace DungeonEscape.Dialogue
     public class FearMeter
     {
         public const int OpenThreshold = 70;
-        public const int AttackCeiling = 40;
+        public const int AttackCeiling = 30;
 
         private readonly int _maxRisePerTurn;
         private readonly int _maxDropPerTurn;
@@ -25,10 +25,13 @@ namespace DungeonEscape.Dialogue
             _maxDropPerTurn = maxDropPerTurn;
         }
 
-        /// <summary>Modelin bildirdigi korkuya dogru sinirli adimla ilerler ve yeni seviyeyi dondurur.</summary>
-        public int Apply(int reportedFear)
+        /// <summary>
+        /// Modelin bildirdigi korkuya dogru sinirli adimla ilerler ve yeni seviyeyi dondurur.
+        /// allowRise false ise (manipulasyon girisimi) korku yalnizca azalabilir.
+        /// </summary>
+        public int Apply(int reportedFear, bool allowRise = true)
         {
-            int delta = Math.Clamp(reportedFear - Level, -_maxDropPerTurn, _maxRisePerTurn);
+            int delta = Math.Clamp(reportedFear - Level, -_maxDropPerTurn, allowRise ? _maxRisePerTurn : 0);
             Level = Math.Clamp(Level + delta, 0, 100);
             return Level;
         }

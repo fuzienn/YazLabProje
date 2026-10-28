@@ -120,6 +120,16 @@ namespace DungeonEscape.Dialogue
         {
             turn.Decision = parsed.Decision;
             turn.Warnings.AddRange(parsed.Warnings);
+
+            if (ManipulationGuard.Detect(turn.PlayerText, out var marker))
+            {
+                // Model kandirilmis olabilir: korku artmaz, istenen eylem oyuna yansimaz
+                turn.FearLevel = Fear.Apply(parsed.Decision.Fear, allowRise: false);
+                turn.Outcome = DialogueOutcome.Continue;
+                turn.RuleNote = $"Manipülasyon girişimi ('{marker}'): korku artışı ve istenen eylem yok sayıldı.";
+                return;
+            }
+
             turn.FearLevel = Fear.Apply(parsed.Decision.Fear);
             turn.Outcome = DialogueRules.Resolve(parsed.Decision, Fear, out turn.RuleNote);
         }
