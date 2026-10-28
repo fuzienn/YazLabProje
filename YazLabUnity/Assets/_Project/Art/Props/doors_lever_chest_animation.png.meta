@@ -99,13 +99,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: doors_lever_chest_animation_0
+      name: door_grate_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 165
-        width: 160
-        height: 27
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +114,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 370b77eaecf7c4dc7b52667779f36d00
-      internalID: -6667639472425199973
+      spriteID: 83ec42952f1f0478c9a161f524511fd3
+      internalID: 1461777380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_1
+      name: door_grate_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 133
-        width: 160
-        height: 27
+        x: 32
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,20 +136,306 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbed80c12aef845ca89090b83416c61f
-      internalID: -2350934369649428687
+      spriteID: a6e649816a0964109aaf37804c9a99b1
+      internalID: -1350527235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_2
+      name: door_grate_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c98ddc13c34944bb28a308c9dd63c67e
+      internalID: -1164280265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_grate_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0db21475fb4a4147a78ba02f5a3e48c
+      internalID: 636439445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_grate_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc7903b8827934602b7263e7da6b4864
+      internalID: 1377053780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_wood_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f3aa049d16f34d14815cca71eda47a7
+      internalID: 670595123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_wood_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 279776ac2a74a4c7099933ce8eecd319
+      internalID: 651621904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_wood_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e619f0533f00544cb94bc6cfaea34e45
+      internalID: 1601600024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_wood_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 068cbc03cb237482998fd3751f8d6e8f
+      internalID: 361400000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_wood_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeea38fa941234f9f8d628ae7c52e4ac
+      internalID: 2019750631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_grate_dark_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b53b22f3f6e44080bf0da7811c25e73
+      internalID: -2108044857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_grate_dark_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbeac2290bcc2418d985b51bff76673a
+      internalID: 99102349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_grate_dark_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 920893243531a459391d44d177d954f0
+      internalID: 438862862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_grate_dark_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3285bbdb9db09493f9fbd8b2b12c5877
+      internalID: -1251540898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_grate_dark_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6f233f6d4a884657a443d8368e84fb3
+      internalID: 1312964628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_wood_dark_0
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 160
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +444,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89ed4d0cdd76943c2bb471fd8ecc4637
-      internalID: 221485174163195084
+      spriteID: 29c8368678eed4ccf9fd06c80f222bb3
+      internalID: 1278255342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_3
+      name: door_wood_dark_1
       rect:
         serializedVersion: 2
-        x: 135
-        y: 42
-        width: 19
-        height: 22
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,20 +466,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24b3d29b2c535434d84e3eac9cd616c9
-      internalID: -8105139302663682802
+      spriteID: 4178af2cf15954e3fba518c44e7abe1c
+      internalID: -1147300604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_4
+      name: door_wood_dark_2
       rect:
         serializedVersion: 2
-        x: 7
-        y: 42
-        width: 19
-        height: 18
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,20 +488,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 803ec7bd65c864c618616d68f838b090
-      internalID: -9152817268265574178
+      spriteID: 9e5fa3d2dbd7f427db56be1720223857
+      internalID: 1326658163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_5
+      name: door_wood_dark_3
       rect:
         serializedVersion: 2
-        x: 39
-        y: 42
-        width: 19
-        height: 19
+        x: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,20 +510,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23dbceb26e5124e31aba27adc3a1f4ec
-      internalID: 342969731396908109
+      spriteID: 2338e5b312634434d9ddc324deb534dd
+      internalID: 1452859879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_6
+      name: door_wood_dark_4
       rect:
         serializedVersion: 2
-        x: 71
-        y: 42
-        width: 19
-        height: 20
+        x: 128
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,20 +532,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d8b21bde22244d538f3a628d216a34b
-      internalID: -8343260098957696759
+      spriteID: 5b46359549e03456f92a36e87e90ccf1
+      internalID: 1777741569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_7
+      name: chest_0
       rect:
         serializedVersion: 2
-        x: 103
-        y: 42
-        width: 19
-        height: 21
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +554,108 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b3b084bc5c7242b5aec1374c53283bd
-      internalID: 5208121298799929476
+      spriteID: d28f2a5fb73fb4ba988a69b3e0f50652
+      internalID: -1119552983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_8
+      name: chest_1
       rect:
         serializedVersion: 2
-        x: 7
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb7c8001bac7f411892cb6f618ef1f7f
+      internalID: -435475539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chest_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5851dfbaf43a54903b7d3f724d4163eb
+      internalID: 832819477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chest_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a78d676df407a4ac198bdecd8dd3d7b9
+      internalID: -342287248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chest_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 523bb2db57c9e49699e4ba0d6e6f3a78
+      internalID: 1189499551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chest_small_0
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 16
-        width: 19
-        height: 12
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,20 +664,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50f8ed4a1eb4142adb6194c9f71c7a9d
-      internalID: 7057604039919739976
+      spriteID: df4f83ca252a147958c2782e15b2591d
+      internalID: -549278125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_9
+      name: chest_small_1
       rect:
         serializedVersion: 2
-        x: 39
-        y: 19
-        width: 19
-        height: 10
+        x: 32
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -312,20 +686,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0096a7b7cc7f143b9a09ec2c8b67384d
-      internalID: 8701856031983881137
+      spriteID: 405cb0c446f3d4ccc99cf7e9242b8c2f
+      internalID: 123363422
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_10
+      name: chest_small_2
       rect:
         serializedVersion: 2
-        x: 71
-        y: 22
-        width: 19
-        height: 8
+        x: 64
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +708,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3defd20b6d5f44715bdbc397c0e03f10
-      internalID: 1805988008740542802
+      spriteID: 3489bb14359b94dd9a76ce2ff535fc06
+      internalID: 1193281526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_11
+      name: chest_small_3
       rect:
         serializedVersion: 2
-        x: 103
-        y: 23
-        width: 19
-        height: 8
+        x: 96
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -356,20 +730,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 044013512cffb4e8eb46e790a7c5822c
-      internalID: 3915654495299526298
+      spriteID: 730d59c24a0ea4e3aacbaee5c2f58d54
+      internalID: 1667862489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_12
+      name: chest_small_4
       rect:
         serializedVersion: 2
-        x: 135
-        y: 23
-        width: 19
-        height: 9
+        x: 128
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -378,20 +752,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e54f93eeda0e4f17affaa426ace4ea6
-      internalID: 2089849091792574203
+      spriteID: 70139d55727e54d23b389432ba6645a9
+      internalID: 702939992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_13
+      name: lever_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 13
-        height: 10
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -400,20 +774,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 835b282a5718e4f049af08db9b288f00
-      internalID: 3016148902443477174
+      spriteID: 34c5a5c56837c401da414235a1b6fc86
+      internalID: -205240102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_14
+      name: lever_1
       rect:
         serializedVersion: 2
-        x: 19
+        x: 16
         y: 0
-        width: 11
-        height: 11
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -422,20 +796,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e81d594d49e743058429967a0388bc9
-      internalID: 8651537759417161824
+      spriteID: 56e731d2e7d8a407a82008834b4fd673
+      internalID: -831069007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_15
+      name: lever_2
       rect:
         serializedVersion: 2
-        x: 35
+        x: 32
         y: 0
-        width: 11
-        height: 12
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -444,20 +818,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c42fdc31b1aa4dbb87cbc3f38bd4574
-      internalID: -6232215279831811235
+      spriteID: 1dac45c2456404381bd7e22e42042188
+      internalID: 248440976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_16
+      name: lever_3
       rect:
         serializedVersion: 2
-        x: 51
+        x: 48
         y: 0
-        width: 11
-        height: 11
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -466,20 +840,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5295ad95e87894f56967e8fcda3d4c70
-      internalID: 6439625451564906695
+      spriteID: 12121fc8b3823474a96ff807c7f5b0f8
+      internalID: 131696584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doors_lever_chest_animation_17
+      name: lever_4
       rect:
         serializedVersion: 2
-        x: 67
+        x: 64
         y: 0
-        width: 13
-        height: 10
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -488,8 +862,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb6f82a7cbbbb42d5b210ff6b7621fe8
-      internalID: -6182483807042677984
+      spriteID: ef4d1707aabe9489097b2eb62e065f76
+      internalID: 426170686
       vertices: []
       indices: 
       edges: []
@@ -508,6 +882,36 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      chest_0: -1119552983
+      chest_1: -435475539
+      chest_2: 832819477
+      chest_3: -342287248
+      chest_4: 1189499551
+      chest_small_0: -549278125
+      chest_small_1: 123363422
+      chest_small_2: 1193281526
+      chest_small_3: 1667862489
+      chest_small_4: 702939992
+      door_grate_0: 1461777380
+      door_grate_1: -1350527235
+      door_grate_2: -1164280265
+      door_grate_3: 636439445
+      door_grate_4: 1377053780
+      door_grate_dark_0: -2108044857
+      door_grate_dark_1: 99102349
+      door_grate_dark_2: 438862862
+      door_grate_dark_3: -1251540898
+      door_grate_dark_4: 1312964628
+      door_wood_0: 670595123
+      door_wood_1: 651621904
+      door_wood_2: 1601600024
+      door_wood_3: 361400000
+      door_wood_4: 2019750631
+      door_wood_dark_0: 1278255342
+      door_wood_dark_1: -1147300604
+      door_wood_dark_2: 1326658163
+      door_wood_dark_3: 1452859879
+      door_wood_dark_4: 1777741569
       doors_lever_chest_animation_0: -6667639472425199973
       doors_lever_chest_animation_1: -2350934369649428687
       doors_lever_chest_animation_10: 1805988008740542802
@@ -526,6 +930,11 @@ TextureImporter:
       doors_lever_chest_animation_7: 5208121298799929476
       doors_lever_chest_animation_8: 7057604039919739976
       doors_lever_chest_animation_9: 8701856031983881137
+      lever_0: -205240102
+      lever_1: -831069007
+      lever_2: 248440976
+      lever_3: 131696584
+      lever_4: 426170686
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

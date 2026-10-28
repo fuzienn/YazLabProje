@@ -17,6 +17,14 @@ namespace DungeonEscape.Editor
         private const int PixelsPerUnit = 16;
         private const int GridSize = 16;
         private static readonly string[] CharacterDirections = { "down", "up", "side" };
+        private const string DoorSheetName = "doors_lever_chest_animation";
+        private static readonly string[] DoorRows = { "door_grate", "door_wood", "door_grate_dark", "door_wood_dark", "chest" };
+        private const string FireSheetName = "fire_animation";
+        private const int FireFrameHeight = 48;
+        private static readonly (string name, int x, int width)[] FireColumns =
+        {
+            ("torch_small", 0, 32), ("torch", 32, 32), ("brazier_big", 64, 64), ("brazier", 128, 48)
+        };
 
         private void OnPreprocessTexture()
         {
@@ -39,9 +47,11 @@ namespace DungeonEscape.Editor
 
             var texture = LoadReadable(assetPath);
             var baseName = Path.GetFileNameWithoutExtension(assetPath);
-            var rects = assetPath.Contains("/Props/")
-                ? AutoSlice(texture, baseName)
-                : GridSlice(texture, baseName, assetPath.Contains("/Characters/"));
+            List<SpriteRect> rects;
+            if (baseName == DoorSheetName) rects = DoorSheetSlice(texture);
+            else if (baseName == FireSheetName) rects = FireSheetSlice(texture);
+            else if (assetPath.Contains("/Props/")) rects = AutoSlice(texture, baseName);
+            else rects = GridSlice(texture, baseName, assetPath.Contains("/Characters/"));
             Object.DestroyImmediate(texture);
 
             provider.SetSpriteRects(rects.ToArray());
@@ -69,19 +79,54 @@ namespace DungeonEscape.Editor
                     var rect = new Rect(col * GridSize, (rows - 1 - row) * GridSize, GridSize, GridSize);
                     if (IsEmpty(texture, rect)) continue;
 
-                    rects.Add(new SpriteRect
-                    {
-                        name = isCharacter && row < CharacterDirections.Length
-                            ? $"{baseName}_{CharacterDirections[row]}_{col}"
-                            : $"{baseName}_{row}_{col}",
-                        rect = rect,
-                        alignment = SpriteAlignment.Center,
-                        pivot = new Vector2(0.5f, 0.5f),
-                        spriteID = GUID.Generate()
-                    });
+                    var name = isCharacter && row < CharacterDirections.Length
+                        ? $"{baseName}_{CharacterDirections[row]}_{col}"
+                        : $"{baseName}_{row}_{col}";
+                    rects.Add(MakeRect(name, rect));
                 }
             }
             return rects;
+        }
+
+        /// <summary>
+        /// Kapi sayfasi: ilk 5 satir 32x32 kapi/sandik kareleri, sonra 32x16 kucuk sandik ve 16x16 salter.
+        /// </summary>
+        private static List<SpriteRect> DoorSheetSlice(Texture2D texture)
+        {
+            var rects = new List<SpriteRect>();
+            int top = texture.height;
+            for (int row = 0; row < DoorRows.Length; row++)
+                for (int frame = 0; frame < 5; frame++)
+                    rects.Add(MakeRect($"{DoorRows[row]}_{frame}", new Rect(frame * 32, top - (row + 1) * 32, 32, 32)));
+            for (int frame = 0; frame < 5; frame++)
+                rects.Add(MakeRect($"chest_small_{frame}", new Rect(frame * 32, top - 176, 32, 16)));
+            for (int frame = 0; frame < 5; frame++)
+                rects.Add(MakeRect($"lever_{frame}", new Rect(frame * 16, top - 192, 16, 16)));
+            rects.RemoveAll(r => IsEmpty(texture, r.rect));
+            return rects;
+        }
+
+        /// <summary>Ates sayfasi: 4 sutun (mesale, buyuk/kucuk mangal), her kare 48px yuksek.</summary>
+        private static List<SpriteRect> FireSheetSlice(Texture2D texture)
+        {
+            var rects = new List<SpriteRect>();
+            int frames = texture.height / FireFrameHeight;
+            foreach (var (name, x, width) in FireColumns)
+                for (int frame = 0; frame < frames; frame++)
+                    rects.Add(MakeRect($"{name}_{frame}", new Rect(x, texture.height - (frame + 1) * FireFrameHeight, width, FireFrameHeight)));
+            return rects;
+        }
+
+        private static SpriteRect MakeRect(string name, Rect rect)
+        {
+            return new SpriteRect
+            {
+                name = name,
+                rect = rect,
+                alignment = SpriteAlignment.Center,
+                pivot = new Vector2(0.5f, 0.5f),
+                spriteID = GUID.Generate()
+            };
         }
 
         private static List<SpriteRect> AutoSlice(Texture2D texture, string baseName)
@@ -90,14 +135,7 @@ namespace DungeonEscape.Editor
             var found = InternalSpriteUtility.GenerateAutomaticSpriteRectangles(texture, 4, 0);
             for (int i = 0; i < found.Length; i++)
             {
-                rects.Add(new SpriteRect
-                {
-                    name = $"{baseName}_{i}",
-                    rect = found[i],
-                    alignment = SpriteAlignment.Center,
-                    pivot = new Vector2(0.5f, 0.5f),
-                    spriteID = GUID.Generate()
-                });
+                rects.Add(MakeRect($"{baseName}_{i}", found[i]));
             }
             return rects;
         }

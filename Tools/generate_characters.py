@@ -2,7 +2,8 @@
 
 Satirlar: asagi, yukari, yan (sag). Sutunlar: durus, yurume-1, yurume-2.
 Sola bakis Unity'de SpriteRenderer.flipX ile elde edilir.
-Kullanim: python3 Tools/generate_characters.py <cikti_klasoru>
+Kullanim: python3 Tools/generate_characters.py <karakter_klasoru> [<obje_klasoru>]
+Obje klasoru verilirse farenin duvar deligi (rat_hole.png) de uretilir.
 """
 import struct
 import sys
@@ -180,6 +181,28 @@ RAT_SIDE = [
 ]
 
 
+RAT_HOLE_PALETTE = {"o": OUTLINE, "x": (12, 9, 18), "r": (104, 98, 130), "R": (70, 64, 92)}
+
+RAT_HOLE = [
+    "................",
+    "................",
+    "................",
+    "................",
+    "................",
+    "................",
+    ".....rrrrrr.....",
+    "....rRooooRr....",
+    "...rRoxxxxoRr...",
+    "...rRoxxxxoRr...",
+    "..rRoxxxxxxoRr..",
+    "..rRoxxxxxxoRr..",
+    "..rRoxxxxxxoRr..",
+    "..rRoxxxxxxoRr..",
+    "..rRoxxxxxxoRr..",
+    "................",
+]
+
+
 def pad(rows, width=TILE):
     """Satirlari ortalayarak 16 genislige tamamlar."""
     out = []
@@ -271,6 +294,13 @@ def main():
     for name, pixels in sheets.items():
         write_png(out / f"{name}.png", pixels, TILE * 3, TILE * 3)
         print(f"{name}.png")
+
+    if len(sys.argv) > 2:
+        props = Path(sys.argv[2])
+        props.mkdir(parents=True, exist_ok=True)
+        hole = [[(0, 0, 0, 0) if ch == "." else RAT_HOLE_PALETTE[ch] + (255,) for ch in row] for row in RAT_HOLE]
+        write_png(props / "rat_hole.png", hole, TILE, TILE)
+        print("rat_hole.png")
 
 
 if __name__ == "__main__":
