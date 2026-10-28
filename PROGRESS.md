@@ -44,7 +44,8 @@
 - **2D NavMesh:** `com.unity.ai.navigation` + **NavMeshPlus** (h8man). Farenin ayrı bir agent type'ı olur ("Rat", küçük yarıçap). Dar geçit yalnız onun NavMesh'inde açıktır.
 - **Oyuncu:** Rigidbody2D + Input System. NavMesh kullanmaz, çarpıştırıcısı geçide sığmaz.
 - **LLM:** Ollama `http://localhost:11434/api/chat`, `stream:false`, `format` = JSON şeması.
-  Model: `llama3.2:3b` (Apple M4, 24 GB RAM). Yedek: `qwen2.5:3b`. Kurulum: `ollama pull llama3.2:3b`.
+  Model: **`gemma3:4b`** (Apple M4, 24 GB RAM, yanıt 1,7-3,6 sn). Kurulum: `ollama pull gemma3:4b`.
+  Seçim gerekçesi (rapora): `llama3.2:3b` ile karşılaştırıldı. llama Türkçede anlamsız cümle kurdu ve hakarete `OPEN_DOOR` verdi; gemma3 tutarlı Türkçe ve uygun eylem üretti.
 - **Çıktı şeması:** `{ "reply": string, "fear": 0-100, "mood": "calm|nervous|scared|angry", "action": "NONE|OPEN_DOOR|ATTACK" }`
   Güvenlik kuralı: kapı ancak `action == OPEN_DOOR` **ve** biriken korku ≥ eşik ise açılır.
 - **Asset'ler:** `free-2d-top-down-pixel-dungeon-asset-pack` (craftpix, 16px) ana tileset. Duvar, zemin, parmaklıklı/ahşap kapı animasyonu, anahtar, şalter, sandık.
@@ -65,7 +66,7 @@
 - [x] Klasör yapısı: `Assets/_Project/{Scripts,Art,Prefabs,Scenes,Tiles,Tests}`
 - [x] Tileset'leri içe aktar ve dilimle (16px, Point filter, PPU 16)
 - [x] Karakter sprite'larını bul (CC0) veya üret: oyuncu, fare, muhafız, gardiyan → `Tools/generate_characters.py` ile üretildi (satır: down/up/side, sütun: durus/yurume1/yurume2; sola bakış flipX)
-- [ ] Ollama modelini indir (`ollama pull llama3.2:3b`) ve terminalden JSON şemalı test isteği at
+- [x] Ollama modelini indir ve terminalden JSON şemalı test isteği at (gemma3:4b seçildi; `format` şeması her yanıtta geçerli JSON verdi)
 
 ### Bölüm 1: Harita (Tilemap) · Sahip: dikmenomer33
 - [ ] Kapı sayfası (`doors_lever_chest_animation.png`) otomatik dilimde birleşiyor: kapılar için 32x32 ızgara dilimi ayarla
@@ -141,3 +142,4 @@
 | 2026-10-28 | Ödev analizi, tasarım ve plan yazıldı. Unity MCP bağlı. Uzak repo incelendi: Library yanlışlıkla commit'lenmiş, `feature/ai-integration`'da ilk Ollama istemcisi var | Bölüm 0 |
 | 2026-10-28 | Geçmiş temizlendi (420 MB → 77 KB), feature dalı main'e ff edildi, gitignore düzeltildi, plan push'landı | Bölüm 0: paketler + 2D renderer |
 | 2026-10-28 | Paketler (NavMeshPlus 0.2.23, AI Navigation 2.0.16, 2D Sprite/Tilemap), URP 2D Renderer, Main sahnesi, `ArtImportProcessor`, karakter sprite'ları, asmdef'ler (`DungeonEscape.Runtime/Editor`) | Ollama modeli, sonra Bölüm 1 |
+| 2026-10-28 | Model karşılaştırması: gemma3:4b seçildi. Bölüm 0 tamam | Bölüm 1 (kapı dilimi, harita) |
