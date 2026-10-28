@@ -77,11 +77,11 @@
 - [x] Dekor: animasyonlu mangal + Light2D (fıçı/kafes Bölüm 6 cilaya taşındı)
 
 ### Bölüm 2: Oyuncu ve Çekirdek Sistemler · Sahip: fuzienn
-- [ ] `PlayerController` (Input System, Rigidbody2D, 4 yön animasyon)
-- [ ] Kamera takibi (Cinemachine veya basit follow), pixel-perfect kamera
-- [ ] `IInteractable` + `Interactor` (E tuşu, en yakın etkileşim)
-- [ ] `Inventory` (anahtar) + `IKeyHolder`
-- [ ] `GameEvents` olay yolu ve `GameStateMachine` (Cell → Escape → Dialogue → Won/Lost)
+- [x] `PlayerController` (Input System, Rigidbody2D, 4 yön animasyon); girdi `IPlayerInput` arkasında, `F` = `Command` eylemi eklendi
+- [x] Kamera takibi (`CameraFollow`, harita sınırına kenetli) + pixel-perfect kamera
+- [x] `IInteractable` + `Interactor` (E tuşu, en yakın etkileşim) + istem metni (`InteractionPromptView`)
+- [x] `KeyRing` (anahtar) + `IKeyHolder` + `LockedDoor` (hücre: anahtar, çıkış: `Open()`)
+- [x] `GameEvents` olay yolu, `GameFlow` (InCell → Escaping → Dialogue → Won/Lost), genel `StateMachine` + `IState` (fare/muhafız kullanacak)
 
 ### Bölüm 3: Fare (Otonom Companion) · Sahip: dikmenomer33
 - [ ] NavMeshPlus kurulumu: `NavMeshSurface` (2D), "Rat" agent type, geçidin sadece fareye açık olması
@@ -117,6 +117,7 @@
 - [ ] Tam akış uçtan uca oynanabilir
 
 ### Bölüm 7: Testler · Sahip: dikmenomer33
+- [x] PlayMode: `PlayerEscapeTests` (duvar, tünel, kilitli kapı, anahtarla açma, hücreden çıkış) 6/6 geçti
 - [ ] EditMode: `DecisionParser` (geçerli, bozuk, eksik alan, alan dışı değer, boş)
 - [ ] EditMode: `FearMeter` ve kapı kuralı
 - [ ] PlayMode: fare görevi × 50 farklı seed → başarı oranı, ort. süre → `Docs/test_results/rat_runs.csv`
@@ -145,3 +146,4 @@
 | 2026-10-28 | Paketler (NavMeshPlus 0.2.23, AI Navigation 2.0.16, 2D Sprite/Tilemap), URP 2D Renderer, Main sahnesi, `ArtImportProcessor`, karakter sprite'ları, asmdef'ler (`DungeonEscape.Runtime/Editor`) | Ollama modeli, sonra Bölüm 1 |
 | 2026-10-28 | Model karşılaştırması: gemma3:4b seçildi. Bölüm 0 tamam | Bölüm 1 (kapı dilimi, harita) |
 | 2026-10-28 | Bölüm 1 tamam: ASCII harita ayrıştırıcı (`LevelLayout`), `LevelBuilder` editör aracı, Main sahnesinde Level 01 | Bölüm 2 (oyuncu) |
+| 2026-10-28 | Bölüm 2 tamam. Hata bulundu ve düzeltildi: aynı karede boyanan Tilemap'lerin collider geometrisi üretilmiyordu (`RebuildColliders`). Not: editör odaksızken Play modu ilerlemiyor; testler `run_tests` ile, elle deneme `EditorApplication.Step()` ile | Bölüm 3 (fare) |
