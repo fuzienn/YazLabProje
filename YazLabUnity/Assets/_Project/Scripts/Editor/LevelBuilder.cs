@@ -3,6 +3,7 @@ using System.Linq;
 using DungeonEscape.Core;
 using DungeonEscape.Interaction;
 using DungeonEscape.Level;
+using DungeonEscape.Navigation;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -46,6 +47,9 @@ namespace DungeonEscape.Editor
             var floor = CreateTilemap(grid, "Floor", FloorOrder, false);
             var walls = CreateTilemap(grid, "Walls", WallOrder, true);
             var tunnel = CreateTilemap(grid, "RatTunnel", WallOrder, true);
+            NavigationSetup.MarkArea(floor.gameObject, NavAreas.WalkableArea);
+            NavigationSetup.MarkArea(walls.gameObject, NavAreas.NotWalkableArea);
+            NavigationSetup.MarkArea(tunnel.gameObject, NavAreas.RatTunnelArea);
 
             PaintTiles(layout, theme, floor, walls, tunnel);
             CreateDoor(root.transform, "CellDoor", layout.GetBounds(CellKind.CellDoor), DoorId.Cell, KeyIds.Cell, "door_grate");
@@ -100,6 +104,7 @@ namespace DungeonEscape.Editor
 
             if (solid)
             {
+                go.layer = LayerMask.NameToLayer(NavigationSetup.WallsLayer);
                 go.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                 go.AddComponent<TilemapCollider2D>().compositeOperation = Collider2D.CompositeOperation.Merge;
                 go.AddComponent<CompositeCollider2D>().geometryType = CompositeCollider2D.GeometryType.Polygons;
@@ -121,6 +126,8 @@ namespace DungeonEscape.Editor
             var box = go.AddComponent<BoxCollider2D>();
             box.size = new Vector2(bounds.width, bounds.height);
             go.AddComponent<LockedDoor>().Configure(id, keyId, frames);
+            go.layer = LayerMask.NameToLayer(NavigationSetup.WallsLayer);
+            NavigationSetup.MarkArea(go, NavAreas.NotWalkableArea);
         }
 
         private static void CreateRatHole(Transform parent, LevelLayout layout)
@@ -153,7 +160,11 @@ namespace DungeonEscape.Editor
                 go.AddComponent<SpawnMarker>().Init(marker.Kind);
 
                 if (marker.Kind == MarkerKind.Torch)
+                {
                     DecorateTorch(go, brazierFrames);
+                    go.layer = LayerMask.NameToLayer(NavigationSetup.WallsLayer);
+                    NavigationSetup.MarkArea(go, NavAreas.NotWalkableArea);
+                }
             }
         }
 
