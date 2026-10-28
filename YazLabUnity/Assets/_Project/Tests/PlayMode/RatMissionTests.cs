@@ -26,9 +26,11 @@ namespace DungeonEscape.Tests
         {
             GameEvents.Reset();
             yield return SceneManager.LoadSceneAsync("Main");
-            // Sahnedeki gercek muhafizlar (varsa) devre disi; her test kendi muhafizlarini kurar
-            foreach (var guard in new System.Collections.Generic.List<IGuard>(GuardRegistry.All))
-                ((Component)guard).gameObject.SetActive(false);
+            yield return null;
+            // Spawner'in rastgele muhafizlari kaldirilir; her test kendi muhafizlarini kurar
+            Object.FindAnyObjectByType<GuardSpawner>()?.Clear();
+            yield return null;
+            Assert.AreEqual(0, GuardRegistry.All.Count);
 
             _rat = Object.FindAnyObjectByType<RatAgent>();
             _player = Object.FindAnyObjectByType<PlayerController>();
