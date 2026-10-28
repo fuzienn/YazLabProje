@@ -84,14 +84,14 @@
 - [x] `GameEvents` olay yolu, `GameFlow` (InCell → Escaping → Dialogue → Won/Lost), genel `StateMachine` + `IState` (fare/muhafız kullanacak)
 
 ### Bölüm 3: Fare (Otonom Companion) · Sahip: dikmenomer33
-- [ ] NavMeshPlus kurulumu: `NavMeshSurface` (2D), "Rat" agent type, geçidin sadece fareye açık olması
-- [ ] `RatAgent` + `NavMeshAgent` 2D ayarları (updateRotation/upAxis kapalı)
-- [ ] `RaySensor2D`: N ışınlı demet, engel mesafe/açı + muhafız görüş algısı (Physics2D.Raycast)
-- [ ] FSM: `IState` arayüzü, Idle/Follow → SelectTarget → Approach → Steal → Return → Deliver
-- [ ] Hedef seçimi: tüm muhafızlar için `NavMesh.CalculatePath` uzunluğu, en kısa olan
-- [ ] Gizlilik: muhafız fareye bakıyorsa bekle/etrafından dolaş
-- [ ] Oyuncu komutu (`F`) + UI'da farenin durumu
-- [ ] Gizmo/debug çizimleri (yol, ışınlar). Rapor görselleri için gerekli
+- [x] NavMeshPlus kurulumu: `Surface_Rat` + `Surface_Guard`, ajan tipleri Rat (r=0.15) / Guard (r=0.3), `RatTunnel` alanı (3) muhafız maskesinde kapalı; çalışma anında pişirme (`NavMeshRuntimeBaker`, Start)
+- [x] `RatAgent` + `NavMeshNavigator` (`INavigator`; updateRotation/upAxis kapalı, baseOffset 0)
+- [x] `RaySensor2D`: 16 ışın, 3 m, Walls+Guards katmanı; hedef menzil tespiti, en yakın engel, görüş hattı
+- [x] FSM: Idle → SelectTarget → Approach ⇄ Hide → Steal → Return → Deliver (`Companion/States/`)
+- [x] Hedef seçimi: `NearestByPathSelector` (`ITargetSelector`), NavMesh yol uzunluğu
+- [x] Gizlilik: muhafız `CanSee` ise Hide; 0.4 sn görüş dışı kalınca devam; muhafızın arkasına yaklaşır
+- [x] Oyuncu komutu (`F` → `PlayerController.CommandIssued` → `RatAgent.Command`); `Status`/`StatusChanged` hazır (HUD Bölüm 6)
+- [x] Gizmo çizimleri: sensör ışınları (kırmızı/yeşil), ajan yolu (camgöbeği)
 
 ### Bölüm 4: Muhafızlar · Sahip: fuzienn
 - [ ] `GuardSpawner`: seed'li rastgele konumlar, geçerli NavMesh noktası, birbirine min. mesafe
@@ -117,6 +117,8 @@
 - [ ] Tam akış uçtan uca oynanabilir
 
 ### Bölüm 7: Testler · Sahip: dikmenomer33
+- [x] EditMode: `TargetSelectorTests` (yol uzunluğu, anahtarsız/etkisiz/ulaşılamaz muhafız) 5/5
+- [x] PlayMode: `RatMissionTests` (en yakından çalma+teslim, saklanma, muhafız yok, anahtarsızları atlama, çift komut) 5/5
 - [x] PlayMode: `PlayerEscapeTests` (duvar, tünel, kilitli kapı, anahtarla açma, hücreden çıkış) 6/6 geçti
 - [ ] EditMode: `DecisionParser` (geçerli, bozuk, eksik alan, alan dışı değer, boş)
 - [ ] EditMode: `FearMeter` ve kapı kuralı
@@ -147,3 +149,4 @@
 | 2026-10-28 | Model karşılaştırması: gemma3:4b seçildi. Bölüm 0 tamam | Bölüm 1 (kapı dilimi, harita) |
 | 2026-10-28 | Bölüm 1 tamam: ASCII harita ayrıştırıcı (`LevelLayout`), `LevelBuilder` editör aracı, Main sahnesinde Level 01 | Bölüm 2 (oyuncu) |
 | 2026-10-28 | Bölüm 2 tamam. Hata bulundu ve düzeltildi: aynı karede boyanan Tilemap'lerin collider geometrisi üretilmiyordu (`RebuildColliders`). Not: editör odaksızken Play modu ilerlemiyor; testler `run_tests` ile, elle deneme `EditorApplication.Step()` ile | Bölüm 3 (fare) |
+| 2026-10-28 | Bölüm 3 tamam. Düzeltilen hatalar: Awake'te pişirilen NavMesh eklenmiyordu (Start'a alındı); ajan baseOffset'i z'ye kayıp CalculatePath'i bozuyordu; StateMachine iç içe geçişleri sıraya alıyor | Bölüm 4 (muhafızlar) |
