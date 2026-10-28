@@ -94,10 +94,10 @@
 - [x] Gizmo çizimleri: sensör ışınları (kırmızı/yeşil), ajan yolu (camgöbeği)
 
 ### Bölüm 4: Muhafızlar · Sahip: fuzienn
-- [ ] `GuardSpawner`: seed'li rastgele konumlar, geçerli NavMesh noktası, birbirine min. mesafe
-- [ ] `Guard`: devriye (NavMesh), anahtar taşıma (`IKeyHolder`), görüş konisi (raycast)
-- [ ] Etkisiz hale getirme: arkadan yaklaşıp `E`. Görülürse yakalanma → yeniden başlat
-- [ ] Gardiyan (son muhafız) sabit konumda, savaş yok, diyaloğu tetikler
+- [x] `GuardSpawner`: 6 adaydan 3 muhafız, seed'li (`Spawn(seed)`, 0=rastgele), NavMesh'e oturtma, min. 2.5 m aralık
+- [x] `Guard`: FSM (LookAround ⇄ Patrol → Neutralized), anahtar (`KeyRing`), `GuardVision` (4 m, 90°, duvarda kırpılan görünür koni)
+- [x] Etkisiz hale getirme: arkadan (≥110°, ≤1.1 m) `E`. Kaçış aşamasında 0.6 sn görülürse `GameLost(Caught)` → `R` ile yeniden başlat
+- [x] `Warden`: kapı önünde sabit, tüm muhafızlar etkisizse `TalkRequested` yayınlar (LLM bağlantısı Bölüm 5)
 
 ### Bölüm 5: LLM NPC (Gardiyan) · Sahip: dikmenomer33
 - [ ] Mevcut `OllamaClient`'ı yeniden düzenle: `ILLMClient` arayüzü, `/api/chat`, mesaj geçmişi
@@ -119,6 +119,7 @@
 ### Bölüm 7: Testler · Sahip: dikmenomer33
 - [x] EditMode: `TargetSelectorTests` (yol uzunluğu, anahtarsız/etkisiz/ulaşılamaz muhafız) 5/5
 - [x] PlayMode: `RatMissionTests` (en yakından çalma+teslim, saklanma, muhafız yok, anahtarsızları atlama, çift komut) 5/5
+- [x] PlayMode: `GuardTests` (aynı seed aynı yerleşim, 10 seed'de ulaşılabilirlik, arkadan/önden etkisizleştirme, yakalanma, hücrede yakalanmama, gardiyan koşulu) 7/7
 - [x] PlayMode: `PlayerEscapeTests` (duvar, tünel, kilitli kapı, anahtarla açma, hücreden çıkış) 6/6 geçti
 - [ ] EditMode: `DecisionParser` (geçerli, bozuk, eksik alan, alan dışı değer, boş)
 - [ ] EditMode: `FearMeter` ve kapı kuralı
@@ -150,3 +151,4 @@
 | 2026-10-28 | Bölüm 1 tamam: ASCII harita ayrıştırıcı (`LevelLayout`), `LevelBuilder` editör aracı, Main sahnesinde Level 01 | Bölüm 2 (oyuncu) |
 | 2026-10-28 | Bölüm 2 tamam. Hata bulundu ve düzeltildi: aynı karede boyanan Tilemap'lerin collider geometrisi üretilmiyordu (`RebuildColliders`). Not: editör odaksızken Play modu ilerlemiyor; testler `run_tests` ile, elle deneme `EditorApplication.Step()` ile | Bölüm 3 (fare) |
 | 2026-10-28 | Bölüm 3 tamam. Düzeltilen hatalar: Awake'te pişirilen NavMesh eklenmiyordu (Start'a alındı); ajan baseOffset'i z'ye kayıp CalculatePath'i bozuyordu; StateMachine iç içe geçişleri sıraya alıyor | Bölüm 4 (muhafızlar) |
+| 2026-10-28 | Bölüm 4 tamam. PlayMode 18/18. Gerçek muhafızlarla seed 7: fare 4.3 sn, yol 5.5 m | Bölüm 5 (LLM gardiyan) |
