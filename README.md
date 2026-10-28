@@ -129,18 +129,42 @@ YazLabUnity/Assets/_Project/
 ```mermaid
 classDiagram
     direction LR
-    class IState { <<interface>> +Enter() +Tick(dt) +Exit() }
-    class StateMachine { +Current +ChangeState(IState) +Tick(dt) }
+    class IState {
+        <<interface>>
+        +Enter()
+        +Tick(dt)
+        +Exit()
+    }
+    class StateMachine {
+        +Current
+        +ChangeState(IState)
+        +Tick(dt)
+    }
     StateMachine o-- IState
 
-    class INavigator { <<interface>> +SetDestination() +TryGetPathLength() +TrySnap() }
+    class INavigator {
+        <<interface>>
+        +SetDestination()
+        +TryGetPathLength()
+        +TrySnap()
+    }
     class NavMeshNavigator
     INavigator <|.. NavMeshNavigator
 
-    class ICommandable { <<interface>> +Command() }
+    class ICommandable {
+        <<interface>>
+        +Command()
+    }
     class RatAgent
-    class RaySensor2D { +Sense() +Detects() +HasLineOfSight() }
-    class ITargetSelector { <<interface>> +Select(guards, keyId) }
+    class RaySensor2D {
+        +Sense()
+        +Detects()
+        +HasLineOfSight()
+    }
+    class ITargetSelector {
+        <<interface>>
+        +Select(guards, keyId)
+    }
     class NearestByPathSelector
     ICommandable <|.. RatAgent
     ITargetSelector <|.. NearestByPathSelector
@@ -150,8 +174,17 @@ classDiagram
     RatAgent --> StateMachine
     NearestByPathSelector --> INavigator
 
-    class IGuard { <<interface>> +Keys +CanSee(point) +IsActive }
-    class IInteractable { <<interface>> +CanInteract() +Interact() }
+    class IGuard {
+        <<interface>>
+        +Keys
+        +CanSee(point)
+        +IsActive
+    }
+    class IInteractable {
+        <<interface>>
+        +CanInteract()
+        +Interact()
+    }
     class Guard
     class Warden
     IGuard <|.. Guard
@@ -160,14 +193,25 @@ classDiagram
     IInteractable <|.. LockedDoor
     RatAgent ..> IGuard : hedef
 
-    class ILLMClient { <<interface>> +CheckHealthAsync() +ChatAsync() }
+    class ILLMClient {
+        <<interface>>
+        +CheckHealthAsync()
+        +ChatAsync()
+    }
     class OllamaClient
-    class IDecisionParser { <<interface>> +Parse(raw) }
+    class IDecisionParser {
+        <<interface>>
+        +Parse(raw)
+    }
     class DecisionParser
-    class DialogueSession { +SendAsync(text) }
+    class DialogueSession {
+        +SendAsync(text)
+    }
     class FearMeter
     class DialogueController
-    class IDialogueView { <<interface>> }
+    class IDialogueView {
+        <<interface>>
+    }
     ILLMClient <|.. OllamaClient
     IDecisionParser <|.. DecisionParser
     DialogueSession --> ILLMClient
