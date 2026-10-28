@@ -116,8 +116,8 @@ namespace DungeonEscape.Guards
 
         public string GetPrompt(Interactor interactor) =>
             IsBehind(interactor.transform.position)
-                ? "E: Muhafizi etkisiz hale getir"
-                : "Arkasindan yaklas!";
+                ? "E: Muhafızı etkisiz hâle getir"
+                : "Arkasından yaklaş!";
 
         public void Interact(Interactor interactor)
         {

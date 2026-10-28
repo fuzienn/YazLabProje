@@ -31,14 +31,14 @@ namespace DungeonEscape.Tests
 
             public Task<HealthStatus> CheckHealthAsync(CancellationToken c) =>
                 Task.FromResult(_serverDown
-                    ? new HealthStatus(false, false, "Ollama sunucusuna ulasilamiyor")
+                    ? new HealthStatus(false, false, "Ollama sunucusuna ulaşılamıyor")
                     : new HealthStatus(true, true, "ok"));
 
             public async Task<LLMResult> ChatAsync(IReadOnlyList<ChatMessage> m, string s, CancellationToken c)
             {
                 await Task.Delay(300, c); // gercekci gecikme: oyun bu arada akmali
                 return _serverDown
-                    ? LLMResult.Fail(LLMErrorKind.ServerUnreachable, "Ollama sunucusuna ulasilamiyor")
+                    ? LLMResult.Fail(LLMErrorKind.ServerUnreachable, "Ollama sunucusuna ulaşılamıyor")
                     : LLMResult.Ok(_replies.Dequeue(), 0.3f);
             }
         }
@@ -117,7 +117,7 @@ namespace DungeonEscape.Tests
             Assert.IsTrue(_input.interactable, "Oyuncu tekrar deneyebilmeli");
             Assert.Greater(Time.frameCount, frames);
             var error = GameObject.Find("DialogueCanvas/Panel/Error").GetComponent<Text>();
-            StringAssert.Contains("ulasilamiyor", error.text);
+            StringAssert.Contains("ulaşılamıyor", error.text);
         }
 
         private IEnumerator StartTalk()

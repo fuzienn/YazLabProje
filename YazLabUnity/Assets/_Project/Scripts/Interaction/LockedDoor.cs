@@ -42,7 +42,7 @@ namespace DungeonEscape.Interaction
 
         public string GetPrompt(Interactor interactor) =>
             interactor.Keys != null && interactor.Keys.HasKey(requiredKeyId)
-                ? "E: Kapiyi ac"
+                ? "E: Kapıyı aç"
                 : "Kilitli. Anahtar gerekli.";
 
         public void Interact(Interactor interactor)

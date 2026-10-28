@@ -53,12 +53,12 @@ namespace DungeonEscape.Dialogue
             var turn = new TurnResult { PlayerText = playerText, FearLevel = Fear.Level };
             if (string.IsNullOrWhiteSpace(playerText))
             {
-                turn.UserFacingError = "Bir sey soylemelisin.";
+                turn.UserFacingError = "Bir şey söylemelisin.";
                 return turn;
             }
             if (IsBusy)
             {
-                turn.UserFacingError = "Gardiyan hala dusunuyor...";
+                turn.UserFacingError = "Gardiyan hâlâ düşünüyor...";
                 return turn;
             }
 
@@ -111,7 +111,7 @@ namespace DungeonEscape.Dialogue
                 return parsed;
             }
 
-            turn.UserFacingError = "Gardiyan anlasilmaz bir seyler mirildandi. (Model gecersiz yanit verdi, tekrar dene.)";
+            turn.UserFacingError = "Gardiyan anlaşılmaz bir şeyler mırıldandı. (Model geçersiz yanıt verdi, tekrar dene.)";
             turn.ErrorKind = retry.Success ? LLMErrorKind.None : retry.ErrorKind;
             return null;
         }

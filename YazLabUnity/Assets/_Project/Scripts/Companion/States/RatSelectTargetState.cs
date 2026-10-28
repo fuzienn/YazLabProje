@@ -15,13 +15,13 @@ namespace DungeonEscape.Companion.States
             var choice = Rat.Selector.Select(GuardRegistry.Active, Rat.KeyId);
             if (!choice.IsValid)
             {
-                Rat.FailMission("Ulasilabilir anahtarli muhafiz yok");
+                Rat.FailMission("Ulaşılabilir, anahtarlı muhafız yok");
                 return;
             }
 
             Rat.Target = choice.Guard;
             Rat.TargetPathLength = choice.PathLength;
-            Rat.SetStatus($"Fare en yakin muhafiza gidiyor ({choice.PathLength:F1} m)");
+            Rat.SetStatus($"Fare en yakın muhafıza gidiyor ({choice.PathLength:F1} m)");
             Rat.ChangeState(Rat.Approach);
         }
 

@@ -21,12 +21,12 @@ namespace DungeonEscape.Dialogue
                 case GuardAction.OpenDoor when fear.CanOpenDoor:
                     return DialogueOutcome.DoorOpens;
                 case GuardAction.OpenDoor:
-                    note = $"Model kapiyi acmak istedi ama korku {fear.Level} < {FearMeter.OpenThreshold}; reddedildi.";
+                    note = $"Model kapıyı açmak istedi ama korku {fear.Level} < {FearMeter.OpenThreshold}; reddedildi.";
                     return DialogueOutcome.Continue;
                 case GuardAction.Attack when fear.BraveEnoughToAttack:
                     return DialogueOutcome.GuardAttacks;
                 case GuardAction.Attack:
-                    note = $"Model saldirmak istedi ama gardiyan cok korkuyor ({fear.Level}); reddedildi.";
+                    note = $"Model saldırmak istedi ama gardiyan çok korkuyor ({fear.Level}); reddedildi.";
                     return DialogueOutcome.Continue;
                 default:
                     return DialogueOutcome.Continue;

@@ -100,7 +100,7 @@ namespace DungeonEscape.Dialogue
             _view.SetThinking(false);
             _view.SetInputEnabled(true);
             if (!_serverReady)
-                _view.ShowError($"{health.Message}\nSunucuyu baslatip tekrar yazabilirsin; oyun beklemeye devam eder.");
+                _view.ShowError($"{health.Message}\nSunucuyu başlatıp tekrar yazabilirsin; oyun beklemeye devam eder.");
         }
 
         private async void OnSubmitted(string text)
@@ -193,9 +193,9 @@ namespace DungeonEscape.Dialogue
             var d = turn.Decision;
             Debug.Log($"[Diyalog] '{turn.PlayerText}' -> fear {d.Fear} (seviye {turn.FearLevel}), {d.Mood}, {d.Action} " +
                       $"=> {turn.Outcome}, {turn.LatencySeconds:F1} sn" +
-                      (turn.Repaired ? ", onarildi" : "") +
+                      (turn.Repaired ? ", onarıldı" : "") +
                       (turn.RuleNote != null ? $", {turn.RuleNote}" : "") +
-                      (turn.Warnings.Count > 0 ? $", uyari: {string.Join("; ", turn.Warnings)}" : ""));
+                      (turn.Warnings.Count > 0 ? $", uyarı: {string.Join("; ", turn.Warnings)}" : ""));
         }
     }
 }

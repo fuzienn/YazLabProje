@@ -32,23 +32,23 @@ namespace DungeonEscape.Dialogue
 
                 if (request.result != UnityWebRequest.Result.Success)
                     return new HealthStatus(false, false,
-                        $"Ollama sunucusuna ulasilamiyor ({_settings.baseUrl}). 'ollama serve' calisiyor mu?");
+                        $"Ollama sunucusuna ulaşılamıyor ({_settings.baseUrl}). 'ollama serve' çalışıyor mu?");
 
                 var models = JObject.Parse(request.downloadHandler.text)["models"]?
                     .Select(m => (string)m["name"]).ToList() ?? new List<string>();
                 bool available = models.Any(IsConfiguredModel);
                 return available
-                    ? new HealthStatus(true, true, "Hazir")
+                    ? new HealthStatus(true, true, "Hazır")
                     : new HealthStatus(true, false,
-                        $"Model yuklu degil: {_settings.model}. Terminalde: ollama pull {_settings.model}");
+                        $"Model yüklü değil: {_settings.model}. Terminalde: ollama pull {_settings.model}");
             }
             catch (OperationCanceledException)
             {
-                return new HealthStatus(false, false, "Iptal edildi");
+                return new HealthStatus(false, false, "İptal edildi");
             }
             catch (Exception e)
             {
-                return new HealthStatus(false, false, $"Sunucu yaniti okunamadi: {e.Message}");
+                return new HealthStatus(false, false, $"Sunucu yanıtı okunamadı: {e.Message}");
             }
         }
 
@@ -82,22 +82,22 @@ namespace DungeonEscape.Dialogue
 
                 var content = (string)JObject.Parse(request.downloadHandler.text)["message"]?["content"];
                 return string.IsNullOrWhiteSpace(content)
-                    ? LLMResult.Fail(LLMErrorKind.EmptyResponse, "Model bos yanit dondurdu.", latency)
+                    ? LLMResult.Fail(LLMErrorKind.EmptyResponse, "Model boş yanıt döndürdü.", latency)
                     : LLMResult.Ok(content, latency);
             }
             catch (OperationCanceledException)
             {
-                return LLMResult.Fail(LLMErrorKind.Cancelled, "Istek iptal edildi.", (float)watch.Elapsed.TotalSeconds);
+                return LLMResult.Fail(LLMErrorKind.Cancelled, "İstek iptal edildi.", (float)watch.Elapsed.TotalSeconds);
             }
             catch (Newtonsoft.Json.JsonException e)
             {
-                return LLMResult.Fail(LLMErrorKind.EmptyResponse, $"Sunucu yaniti okunamadi: {e.Message}",
+                return LLMResult.Fail(LLMErrorKind.EmptyResponse, $"Sunucu yanıtı okunamadı: {e.Message}",
                     (float)watch.Elapsed.TotalSeconds);
             }
             catch (Exception e)
             {
                 // Ornegin guvensiz HTTP engeli veya gecersiz adres: istek hic gonderilemedi
-                return LLMResult.Fail(LLMErrorKind.ServerUnreachable, $"Istek gonderilemedi ({_settings.baseUrl}): {e.Message}",
+                return LLMResult.Fail(LLMErrorKind.ServerUnreachable, $"İstek gönderilemedi ({_settings.baseUrl}): {e.Message}",
                     (float)watch.Elapsed.TotalSeconds);
             }
         }
@@ -110,13 +110,13 @@ namespace DungeonEscape.Dialogue
                     return null;
                 case UnityWebRequest.Result.ConnectionError when IsTimeout(request.error):
                     return LLMResult.Fail(LLMErrorKind.Timeout,
-                        $"Model {_settings.timeoutSeconds} sn icinde yanit vermedi.", latency);
+                        $"Model {_settings.timeoutSeconds} sn içinde yanıt vermedi.", latency);
                 case UnityWebRequest.Result.ConnectionError:
                     return LLMResult.Fail(LLMErrorKind.ServerUnreachable,
-                        $"Ollama sunucusuna ulasilamiyor ({_settings.baseUrl}): {request.error}", latency);
+                        $"Ollama sunucusuna ulaşılamıyor ({_settings.baseUrl}): {request.error}", latency);
                 case UnityWebRequest.Result.ProtocolError when request.responseCode == 404:
                     return LLMResult.Fail(LLMErrorKind.ModelMissing,
-                        $"Model bulunamadi: {_settings.model}. Terminalde: ollama pull {_settings.model}", latency);
+                        $"Model bulunamadı: {_settings.model}. Terminalde: ollama pull {_settings.model}", latency);
                 default:
                     return LLMResult.Fail(LLMErrorKind.HttpError,
                         $"HTTP {request.responseCode}: {request.error}", latency);

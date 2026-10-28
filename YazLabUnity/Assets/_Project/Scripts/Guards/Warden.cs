@@ -32,8 +32,8 @@ namespace DungeonEscape.Guards
 
         public string GetPrompt(Interactor interactor) =>
             AllGuardsDown
-                ? "E: Gardiyanla konus"
-                : "Gardiyan: \"Once arkadaslarimi atlatman lazim, evlat.\"";
+                ? "E: Gardiyanla konuş"
+                : "Gardiyan: \"Önce arkadaşlarımı atlatman lazım, evlat.\"";
 
         public void Interact(Interactor interactor)
         {

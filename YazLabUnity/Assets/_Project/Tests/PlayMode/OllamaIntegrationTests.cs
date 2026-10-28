@@ -39,7 +39,7 @@ namespace DungeonEscape.Tests
             var health = client.CheckHealthAsync(CancellationToken.None);
             yield return Await(health);
             Assert.IsFalse(health.Result.ServerUp);
-            StringAssert.Contains("ulasilamiyor", health.Result.Message);
+            StringAssert.Contains("ulaşılamıyor", health.Result.Message);
 
             var chat = client.ChatAsync(new[] { ChatMessage.User("merhaba") }, GuardDecision.JsonSchema, CancellationToken.None);
             yield return Await(chat);

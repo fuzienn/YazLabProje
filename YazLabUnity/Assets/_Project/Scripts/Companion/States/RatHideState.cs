@@ -16,7 +16,7 @@ namespace DungeonEscape.Companion.States
             _safeTime = 0f;
             Rat.HideCount++;
             Rat.Navigator.Stop();
-            Rat.SetStatus("Fare saklaniyor, muhafiz bakiyor...");
+            Rat.SetStatus("Fare saklanıyor, muhafız bakıyor...");
         }
 
         public override void Tick(float deltaTime)
@@ -31,7 +31,7 @@ namespace DungeonEscape.Companion.States
             _safeTime = target.CanSee(Rat.Position) ? 0f : _safeTime + deltaTime;
             if (_safeTime >= SafeTimeToResume)
             {
-                Rat.SetStatus("Fare sessizce yaklasiyor");
+                Rat.SetStatus("Fare sessizce yaklaşıyor");
                 Rat.ChangeState(Rat.Approach);
             }
         }

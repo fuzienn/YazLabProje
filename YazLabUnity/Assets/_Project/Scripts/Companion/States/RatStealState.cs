@@ -17,7 +17,7 @@ namespace DungeonEscape.Companion.States
             base.Enter();
             _timer = 0f;
             Rat.Navigator.Stop();
-            Rat.SetStatus("Fare anahtari kemiriyor...");
+            Rat.SetStatus("Fare anahtarı kemiriyor...");
         }
 
         public override void Tick(float deltaTime)
@@ -27,7 +27,7 @@ namespace DungeonEscape.Companion.States
 
             if (Rat.Target != null && KeyRing.Transfer(Rat.Target.Keys, Rat.Keys, Rat.KeyId))
             {
-                Rat.SetStatus("Fare anahtari kapti, geri donuyor!");
+                Rat.SetStatus("Fare anahtarı kaptı, geri dönüyor!");
                 Rat.ChangeState(Rat.Return);
             }
             else

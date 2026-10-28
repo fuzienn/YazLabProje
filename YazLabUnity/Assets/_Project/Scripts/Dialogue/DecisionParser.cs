@@ -14,12 +14,12 @@ namespace DungeonEscape.Dialogue
     {
         public ParseResult Parse(string raw)
         {
-            if (string.IsNullOrWhiteSpace(raw)) return ParseResult.Fail("Bos cikti");
+            if (string.IsNullOrWhiteSpace(raw)) return ParseResult.Fail("Boş çıktı");
 
             var warnings = new List<string>();
             var json = ExtractJsonObject(raw);
-            if (json == null) return ParseResult.Fail("Ciktida JSON nesnesi yok");
-            if (json.Length != raw.Trim().Length) warnings.Add("JSON disindaki metin atildi");
+            if (json == null) return ParseResult.Fail("Çıktıda JSON nesnesi yok");
+            if (json.Length != raw.Trim().Length) warnings.Add("JSON dışındaki metin atıldı");
 
             JObject obj;
             try
@@ -28,11 +28,11 @@ namespace DungeonEscape.Dialogue
             }
             catch (JsonException e)
             {
-                return ParseResult.Fail($"Gecersiz JSON: {e.Message}");
+                return ParseResult.Fail($"Geçersiz JSON: {e.Message}");
             }
 
             var reply = ((string)obj["reply"])?.Trim();
-            if (string.IsNullOrEmpty(reply)) return ParseResult.Fail("'reply' alani yok veya bos");
+            if (string.IsNullOrEmpty(reply)) return ParseResult.Fail("'reply' alanı yok veya boş");
 
             int fear = ReadFear(obj["fear"], warnings);
             var mood = ReadEnum(obj["mood"], GuardMood.Calm, "mood", warnings);
@@ -64,12 +64,12 @@ namespace DungeonEscape.Dialogue
         {
             if (token == null || !double.TryParse(token.ToString(), NumberStyles.Float, CultureInfo.InvariantCulture, out double value))
             {
-                warnings.Add("'fear' okunamadi, 0 kabul edildi");
+                warnings.Add("'fear' okunamadı, 0 kabul edildi");
                 return 0;
             }
             int fear = (int)Math.Round(value);
             if (fear is >= 0 and <= 100) return fear;
-            warnings.Add($"'fear' {fear} aralik disi, sinirlandi");
+            warnings.Add($"'fear' {fear} aralık dışı, sınırlandı");
             return Math.Clamp(fear, 0, 100);
         }
 
@@ -80,7 +80,7 @@ namespace DungeonEscape.Dialogue
             // Sayisal metinler ("7") tanimsiz enum degeri uretmesin diye IsDefined ile dogrulanir
             if (!string.IsNullOrEmpty(text) && !char.IsDigit(text[0]) && Enum.TryParse(text, true, out T value)
                 && Enum.IsDefined(typeof(T), value)) return value;
-            warnings.Add($"'{field}' gecersiz ('{token}'), {fallback} kabul edildi");
+            warnings.Add($"'{field}' geçersiz ('{token}'), {fallback} kabul edildi");
             return fallback;
         }
     }
