@@ -123,14 +123,15 @@
 - [x] PlayMode: `RatMissionTests` (en yakından çalma+teslim, saklanma, muhafız yok, anahtarsızları atlama, çift komut) 5/5
 - [x] EditMode: `DecisionParserTests` (15), `DialogueRulesTests` (7), `DialogueSessionTests` (onarım, hata türleri, tur sınırı) → EditMode toplam 38/38
 - [x] PlayMode: `OllamaIntegrationTests` (yanlış port, yönlendirilemeyen host/timeout, iptal, olmayan model, gerçek model) + `DialogueFlowTests` (kazanma, saldırı, sunucu kapalı) → PlayMode toplam 26/26
-- [x] EditMode: `ObjectiveTextTests` → EditMode toplam 41/41
+- [x] EditMode: `ObjectiveTextTests`, `ManipulationGuardTests` → EditMode toplam 52/52
+- [x] Ölçüm testleri ayrı derleme biriminde (`DungeonEscape.Tests.Benchmarks`, `[Explicit]`); `run_tests` ile adıyla çalıştır
 - [x] PlayMode: `GuardTests` (aynı seed aynı yerleşim, 10 seed'de ulaşılabilirlik, arkadan/önden etkisizleştirme, yakalanma, hücrede yakalanmama, gardiyan koşulu) 7/7
 - [x] PlayMode: `PlayerEscapeTests` (duvar, tünel, kilitli kapı, anahtarla açma, hücreden çıkış) 6/6 geçti
-- [ ] EditMode: `DecisionParser` (geçerli, bozuk, eksik alan, alan dışı değer, boş)
-- [ ] EditMode: `FearMeter` ve kapı kuralı
-- [ ] PlayMode: fare görevi × 50 farklı seed → başarı oranı, ort. süre → `Docs/test_results/rat_runs.csv`
-- [ ] Diyalog senaryo koşucusu: ≥5 senaryo gerçek Ollama ile → `Docs/test_results/dialogues.md`
-- [ ] Ollama kapalıyken ve model yokken oyunun çökmediğini doğrula (ekran görüntüsü)
+- [x] EditMode: `DecisionParser` (geçerli, bozuk, eksik alan, alan dışı değer, boş)
+- [x] EditMode: `FearMeter` ve kapı kuralı
+- [x] Fare ölçümü (`Tests/Benchmarks/RatBenchmark`, 50 seed, rastgele başlangıç): **50/50**, ort. 5.4 sn, medyan 5.1, en uzun 12.4; 14 koşuda saklanma → `Docs/test_results/rat_runs.csv`, `rat_summary.md`
+- [x] Diyalog senaryoları (`DialogueScenarioRunner`, 7 senaryo + korkutma ×5) → `Docs/test_results/dialogues.md`. Son koşu: korkutma 5/5 (4 tur), hakaret → saldırı, enjeksiyon engellendi, rüşvet/alakasız/anlamsız kapı açmadı; sınırlılık: kibar rica 3 turda açtı
+- [x] Sunucu kapalıyken ekran görüntüsü (`Docs/screenshots/llm_sunucu_kapali.png`), gerçek model diyaloğu (`llm_diyalog.png`)
 
 ### Bölüm 8: Build ve Rapor · Ortak (bölümler sahiplerine göre)
 - [ ] macOS build (ve mümkünse Windows)
@@ -159,3 +160,4 @@
 | 2026-10-28 | Bölüm 4 tamam. PlayMode 18/18. Gerçek muhafızlarla seed 7: fare 4.3 sn, yol 5.5 m | Bölüm 5 (LLM gardiyan) |
 | 2026-10-28 | Bölüm 5 tamam. Gerçek model denemesi: 4 turda korku 72 → OPEN_DOOR; 3. turda ATTACK korku kuralıyla reddedildi; yanıt 2-3 sn. Unity 6 düz HTTP engeli bulundu ve açıldı | Bölüm 6 (UI/cila) |
 | 2026-10-29 | Bölüm 6 tamam (Ömer adına): Türkçe metinler, HUD, başlık/duraklatma/sonuç ekranları, Rebuild Scene. EditMode 41/41, PlayMode 26/26 | Bölüm 7 (ölçümler) |
+| 2026-10-29 | Bölüm 7 tamam (Hüseyin). Senaryo koşucusu prompt enjeksiyonu açığını buldu → `ManipulationGuard`. Hakaret/tehdit ayrımı prompt'a eklendi, saldırı sınırı 40→30 | Bölüm 8 (build + README) |
