@@ -100,16 +100,18 @@
 - [x] `Warden`: kapı önünde sabit, tüm muhafızlar etkisizse `TalkRequested` yayınlar (LLM bağlantısı Bölüm 5)
 
 ### Bölüm 5: LLM NPC (Gardiyan) · Sahip: dikmenomer33
-- [ ] Mevcut `OllamaClient`'ı yeniden düzenle: `ILLMClient` arayüzü, `/api/chat`, mesaj geçmişi
-- [ ] JSON şeması ile `format` parametresi; `GuardDecision` DTO
-- [ ] `IDecisionParser`: doğrulama, `{...}` ayıklama ile onarım, enum/aralık kontrolü
-- [ ] Hata yönetimi: başlangıçta `/api/tags` sağlık kontrolü, model yok, sunucu kapalı, timeout, iptal
-- [ ] Sistem promptu (kişilik + amaç + kurallar), Türkçe; rapora koy
-- [ ] `FearMeter`: korku birikimi ve eşik; kapı açma kuralı
-- [ ] Diyalog UI: metin girişi, sohbet geçmişi, "Düşünüyor..." animasyonu, korku barı, hata mesajları
-- [ ] Oyun durumuna bağla: OPEN_DOOR → kapı animasyonu → kazanma; ATTACK → kaybetme
+- [x] `ILLMClient` + `OllamaClient` (`/api/tags` sağlık, `/api/chat`, UnityWebRequest + await, iptal); eski `Assets/Scripts/AI/LLM` kaldırıldı
+- [x] JSON şeması `format` parametresinde; `GuardDecision` (reply, fear, mood, action)
+- [x] `DecisionParser`: `{...}` ayıklama, kod bloğu temizleme, fear sınırlama, enum eşleme; bozuksa 1 kez model onarımı (`DialogueSession`)
+- [x] Hata yönetimi: sağlık kontrolü, ServerUnreachable/ModelMissing/Timeout/EmptyResponse/Cancelled, kullanıcıya mesaj, oyun durumu değişmez. `insecureHttpOption = AlwaysAllowed` (ekip arkadaşının makinesindeki Ollama için)
+- [x] Sistem promptu `WardenPrompt` (Bertan, korkak yaşlı gardiyan; her turda güncel korku)
+- [x] `FearMeter` (tur başı +35/-15, eşik 70) + `DialogueRules` (OPEN_DOOR eşik altıysa ret, ATTACK korku<40 ise geçerli)
+- [x] Diyalog UI (`DialogueView`/`IDialogueView`): giriş, geçmiş, "Gardiyan düşünüyor...", korku çubuğu, hata satırı, Esc
+- [x] Oyun durumu: OPEN_DOOR → çıkış kapısı + gardiyan kenara çekilir → `ExitZone` → kazanma; ATTACK → `GameLost(WardenAttacked)`
 
 ### Bölüm 6: Oyun Akışı ve Cila · Sahip: fuzienn
+- [ ] Tüm kullanıcıya görünen metinleri Türkçe karakterlerle düzelt ("Kapiyi ac" → "Kapıyı aç" vb.; OllamaClient/DialogueSession hata mesajları dahil)
+- [ ] `Dungeon Escape/Rebuild Scene` menüsü: Build Level → Setup Gameplay → Setup Navigation And Rat → Setup Guards → Setup Dialogue (sıra önemli)
 - [ ] Ana menü, durdurma menüsü, kazanma/kaybetme ekranları
 - [ ] Görev ipuçları (HUD: "Fareye F ile emir ver" vb.)
 - [ ] Dekor: fıçı, sandık, kafes (`Objects.png`)
@@ -119,6 +121,8 @@
 ### Bölüm 7: Testler · Sahip: dikmenomer33
 - [x] EditMode: `TargetSelectorTests` (yol uzunluğu, anahtarsız/etkisiz/ulaşılamaz muhafız) 5/5
 - [x] PlayMode: `RatMissionTests` (en yakından çalma+teslim, saklanma, muhafız yok, anahtarsızları atlama, çift komut) 5/5
+- [x] EditMode: `DecisionParserTests` (15), `DialogueRulesTests` (7), `DialogueSessionTests` (onarım, hata türleri, tur sınırı) → EditMode toplam 38/38
+- [x] PlayMode: `OllamaIntegrationTests` (yanlış port, yönlendirilemeyen host/timeout, iptal, olmayan model, gerçek model) + `DialogueFlowTests` (kazanma, saldırı, sunucu kapalı) → PlayMode toplam 26/26
 - [x] PlayMode: `GuardTests` (aynı seed aynı yerleşim, 10 seed'de ulaşılabilirlik, arkadan/önden etkisizleştirme, yakalanma, hücrede yakalanmama, gardiyan koşulu) 7/7
 - [x] PlayMode: `PlayerEscapeTests` (duvar, tünel, kilitli kapı, anahtarla açma, hücreden çıkış) 6/6 geçti
 - [ ] EditMode: `DecisionParser` (geçerli, bozuk, eksik alan, alan dışı değer, boş)
@@ -152,3 +156,4 @@
 | 2026-10-28 | Bölüm 2 tamam. Hata bulundu ve düzeltildi: aynı karede boyanan Tilemap'lerin collider geometrisi üretilmiyordu (`RebuildColliders`). Not: editör odaksızken Play modu ilerlemiyor; testler `run_tests` ile, elle deneme `EditorApplication.Step()` ile | Bölüm 3 (fare) |
 | 2026-10-28 | Bölüm 3 tamam. Düzeltilen hatalar: Awake'te pişirilen NavMesh eklenmiyordu (Start'a alındı); ajan baseOffset'i z'ye kayıp CalculatePath'i bozuyordu; StateMachine iç içe geçişleri sıraya alıyor | Bölüm 4 (muhafızlar) |
 | 2026-10-28 | Bölüm 4 tamam. PlayMode 18/18. Gerçek muhafızlarla seed 7: fare 4.3 sn, yol 5.5 m | Bölüm 5 (LLM gardiyan) |
+| 2026-10-28 | Bölüm 5 tamam. Gerçek model denemesi: 4 turda korku 72 → OPEN_DOOR; 3. turda ATTACK korku kuralıyla reddedildi; yanıt 2-3 sn. Unity 6 düz HTTP engeli bulundu ve açıldı | Bölüm 6 (UI/cila) |
