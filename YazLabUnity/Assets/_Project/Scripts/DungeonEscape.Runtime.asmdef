@@ -1,0 +1,18 @@
+{
+    "name": "DungeonEscape.Runtime",
+    "rootNamespace": "DungeonEscape",
+    "references": [
+        "Unity.InputSystem",
+        "Unity.AI.Navigation",
+        "NavMeshPlus"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

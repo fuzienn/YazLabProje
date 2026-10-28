@@ -1,0 +1,21 @@
+{
+    "name": "DungeonEscape.Editor",
+    "rootNamespace": "DungeonEscape.Editor",
+    "references": [
+        "DungeonEscape.Runtime",
+        "Unity.2D.Sprite.Editor",
+        "NavMeshPlus",
+        "NavMeshPlusEditor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
