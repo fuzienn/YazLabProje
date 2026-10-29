@@ -118,3 +118,7 @@ InitTestScene*.unity*
 /.claude/
 /*.zip
 /Teslim/
+/ML/.venv/
+/ML/results/
+/YazLabUnity/Assets/ML-Agents/
+/YazLabUnity/Assets/ML-Agents.meta
