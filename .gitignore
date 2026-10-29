@@ -115,7 +115,7 @@ InitTestScene*.unity*
 /install-skills.sh
 .DS_Store
 /YazLabUnity/.vscode/
-/.claude/
+/.*/
 /*.zip
 /Teslim/
 /ML/.venv/
