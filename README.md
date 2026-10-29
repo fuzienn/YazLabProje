@@ -24,6 +24,7 @@ Kuşbakışı 2D bir zindandan kaçış oyunu. Oyuncu, hücresinden yalnızca k�
 7. [Hata Yönetimi](#7-hata-yönetimi)
 8. [Testler ve Sonuçlar](#8-testler-ve-sonuçlar)
 9. [Sonuç ve Tartışma](#9-sonuç-ve-tartışma)
+10. [Bonus: ML-Agents ile Pekiştirmeli Öğrenme](#10-bonus-ml-agents-ile-pekiştirmeli-öğrenme)
 
 ## 1. Giriş
 
@@ -551,6 +552,86 @@ Ortalama yanıt süresi tur başına 3–5 saniyedir (Apple M4). İlk istek, mod
 ### 9.3. Olası geliştirmeler
 
 - Örnekli (few-shot) prompt veya daha büyük bir modelle (örneğin `gemma3:12b`) söz-eylem tutarlılığının artırılması; tutarsızlık olduğunda modelden ikinci bir görüş istenmesi.
-- ML-Agents ile farenin pekiştirmeli öğrenmeyle eğitilmesi ve NavMesh sürümüyle karşılaştırılması.
+- Bonus bölümde (10) eğitilen gizli yaklaşma politikasının ana oyundaki fareye entegre edilmesi.
 - Muhafızların sesleri duyması, fareyi fark edip kovalaması gibi daha zengin gizlilik mekanikleri.
 - Birden fazla harita ve rastgele harita üretimi.
+
+## 10. Bonus: ML-Agents ile Pekiştirmeli Öğrenme
+
+Oyundaki fare NavMesh ve elle tasarlanmış bir durum makinesiyle çalışır. Bonus olarak, farenin en zor alt görevi olan **muhafıza görülmeden arkadan yaklaşmayı**, hiçbir kural yazmadan ML-Agents (PPO) ile sıfırdan öğrendik. Eğitim kodu ana oyundan ayrı bir derleme birimindedir (`DungeonEscape.ML`); ana oyun ML-Agents'a bağımlı değildir.
+
+![Eğitilmiş politika 12 arenada](Docs/ml/rl_arenalar.png)
+
+### 10.1. Ortam
+
+- `RatTraining` sahnesinde **12 paralel arena** (10×7 m). Her bölümde 3 sütun, muhafız ve fare rastgele yerleşir; fare muhafızdan en az 4 m uzakta başlar.
+- Muhafız oyundakiyle aynı görüş konisini (`GuardVision`, 4 m, 90°, duvarda kırpılan) kullanır. 1–2,5 sn'de bir rastgele yöne bakar, fareyi görünce ona döner.
+- Eğitim, grafik penceresi olmayan bir macOS build'i üzerinden 4 paralel ortamla (48 ajan) yapılır. Zaman ölçeği 20x'tir.
+
+### 10.2. Gözlem, eylem, ödül
+
+| | |
+|---|---|
+| **Işın sensörü** | `RayPerceptionSensor2D`: 17 ışın (8/yön, 180°), 4 m, etiketler `Wall`, `Guard` |
+| **Vektör gözlem (9)** | Muhafızın arkasındaki hedef noktaya göre konum (2), muhafıza göre konum (2), muhafızın bakış yönü (2), farenin hızı (2), "şu an görülüyor mu" (1) |
+| **Eylem** | Sürekli 2B hareket (hız 2,6 m/sn); 5 adımda bir karar |
+| **Bölüm sonu** | Başarı, yakalanma veya 1.500 adım |
+
+| Ödül bileşeni | Değer |
+|---|---|
+| Muhafızın arkasına (≥ 110°, ≤ 0,75 m) görülmeden ulaşmak | **+1** |
+| 0,6 sn kesintisiz görülüp yakalanmak | **−1** |
+| Görülen her adım | −0,01 |
+| Her adım (oyalanma cezası) | −1 / 1500 |
+| Duvara sürtünen her adım | −0,002 |
+| Hedefe yaklaşma: `0,5 × (önceki − şimdiki mesafe)` | potansiyel tabanlı yönlendirme |
+| Bölüm sonunda `+0,5 × kalan mesafe` | terminal potansiyeli sıfırlama |
+
+Son satır kritiktir. Ng vd. (1999) potansiyel tabanlı ödül şekillendirmesinde terminal durumun potansiyeli sıfır olmalıdır. Böylece yönlendirme ödülünün bölüm boyunca toplamı, bölümün nasıl bittiğinden bağımsız bir sabit olur ve en iyi politika değişmez. Bu düzeltme olmadan ajan "hedefe koşup yakalanmanın" kârlı olduğunu öğrendi (bkz. 10.3).
+
+PPO hiperparametreleri: `ML/config/rat_stealth.yaml` (128×2 ağ, batch 1024, buffer 20480, öğrenme oranı 3e-4 doğrusal azalan, γ = 0,99, girdi normalizasyonu açık).
+
+### 10.3. Eğitim süreci: üç deneme
+
+![Üç denemenin ödül eğrileri](Docs/ml/reward_comparison.png)
+
+| Deneme | Değişiklik | Sonuç |
+|---|---|---|
+| 1 | Yaklaşma ödülü 0,1 | 400 bin adımda ödül −1,3'te düz kaldı. Entropi düşmedi, bölümler ~240 adımda yakalanmayla bitti. Yönlendirme yakalanma cezasının yanında çok zayıftı. **Durduruldu.** |
+| 2 | Yaklaşma ödülü 0,5 | Ödül +1,7'ye çıktı ama değerlendirmede ajan tabandan **kötü** çıktı (%54 başarı, %43 yakalanma). Toplam ödül yanıltıcıydı: 6 m koşmak +3 kazandırıyor, yakalanma yalnızca −1 götürüyordu. Ajan gizlenmeyi değil koşmayı öğrendi (**ödül hackleme**). |
+| 3 | Terminal potansiyeli sıfırlama + gerçek başarı/yakalanma oranlarını TensorBoard'a yazma | Başarı oranı 0'dan %64'e çıktı, 3 milyon adımda (~12 dk) yakınsadı. |
+
+Farklı ödül fonksiyonlarının ölçekleri farklı olduğu için yukarıdaki grafikte eğrilerin eğilimi karşılaştırılmalıdır, mutlak değerleri değil. Bu yüzden 3. denemede doğrudan başarı oranı da kaydedildi:
+
+| | |
+|---|---|
+| ![Başarı oranı](Docs/ml/success_rate.png) | ![Yakalanma oranı](Docs/ml/caught_rate.png) |
+| ![Bölüm uzunluğu](Docs/ml/episode_length.png) | ![Politika entropisi](Docs/ml/entropy.png) |
+
+Bölüm uzunluğu önce artar (ajan önce hayatta kalmayı öğrenir), sonra hızla düşer (hedefe ulaşmayı öğrenir).
+
+### 10.4. Değerlendirme
+
+Eğitilmiş model (`Assets/_Project/ML/Models/RatStealth.onnx`, deterministik çıkarım), gizlilik gözetmeden hedefe düz koşan bir taban politikayla aynı arenalarda **600'er bölüm** karşılaştırıldı (`RatRLEvaluation`):
+
+| Politika | Başarı | Yakalanma | Zaman aşımı | Başarılı bölümde ort. adım |
+|---|---|---|---|---|
+| **Eğitilmiş PPO** | **%64** | %36 | **%1** | 137 |
+| Taban: doğrudan hedefe koş | %57 | %27 | %17 | 145 |
+
+Eğitilmiş ajan 7 puan daha sık başarıya ulaşır. Taban politikanın sütunlara takılıp kaldığı durumların neredeyse tamamını çözer (zaman aşımı %17 → %1). Buna karşılık daha atak davrandığı için daha sık yakalanır. Muhafızı izleyip doğru anı beklemeyi tam öğrenemedi; ajanın belleği yok ve muhafızın dönüşleri rastgele.
+
+### 10.5. Yeniden üretme
+
+```bash
+# Unity: Dungeon Escape → ML → Build Training Scene, sonra sahneyi macOS için build et (Builds/RatTraining)
+uv venv -p 3.10 ML/.venv
+uv pip install --python ML/.venv/bin/python --override ML/overrides.txt mlagents==1.1.0 matplotlib "setuptools<70"
+ML/train.sh rat_stealth            # PPO eğitimi (TensorBoard: ML/results)
+ML/.venv/bin/python ML/plot_training.py rat_stealth   # Docs/ml grafikleri
+```
+
+`RatTraining` sahnesi editörde açılıp Play'e basıldığında eğitilmiş model çıkarım modunda oynar.
+
+**Geliştirme fikirleri:** LSTM bellek veya muhafızın dönüş zamanlayıcısını gözleme ekleyerek "bekle ve fırsat kolla" davranışının öğretilmesi. Müfredatlı (curriculum) eğitim: önce yavaş dönen muhafız. Eğitilmiş politikanın ana oyundaki farenin `Approach/Hide` durumlarının yerine takılıp NavMesh sürümüyle aynı 50 seed'de karşılaştırılması.
+
