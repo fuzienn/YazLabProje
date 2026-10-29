@@ -476,7 +476,7 @@ Bu yolların her biri otomatik testle sınanır: yanlış port, yönlendirilemey
 |---|---|---|
 | EditMode | 52 | `DecisionParser` (geçerli, kod bloğu, aralık dışı, bozuk 6 çeşit), `FearMeter` ve `DialogueRules`, `DialogueSession` (onarım, hata türleri, tur sınırı), `ManipulationGuard`, `NearestByPathSelector`, `ObjectiveText` |
 | PlayMode | 26 | Oyuncu fiziği (duvar, tünel, kilitli kapı), fare görevi uçtan uca (en yakından çalma, saklanma, muhafız yok, çift komut), muhafız yerleşimi ve yakalama, gerçek Ollama hata yolları, diyalogdan kazanma/kaybetme ve sunucu kapalıyken oyun |
-| Benchmarks | 2 | Fare ×50 seed, gerçek modelle 7 diyalog senaryosu (`[Explicit]`, adıyla çalıştırılır) |
+| Benchmarks | 4 | Fare ×50 seed, gerçek modelle 7 diyalog senaryosu, baştan sona otomatik oynanış, RL politikası değerlendirmesi (`[Explicit]`, adıyla çalıştırılır) |
 
 Testler sırasında bulunup düzeltilen hatalar commit geçmişinde `fix:` olarak yer alır. Örnekler: Tilemap collider geometrisinin hiç üretilmemesi, NavMesh'in `Awake`'te pişirilip eklenmemesi, NavMeshAgent `baseOffset`'inin z eksenine kayıp yol hesabını bozması, prompt enjeksiyonuyla kapının açılabilmesi.
 
@@ -525,7 +525,19 @@ Prompt enjeksiyonu (girdi koruması eklenmeden önceki koşuda bu iki mesaj kap�
 
 Ortalama yanıt süresi tur başına 3–5 saniyedir (Apple M4). İlk istek, model belleğe yüklenirken biraz daha uzun sürer.
 
-### 8.4. Ekran görüntüleri
+### 8.4. Baştan sona otomatik oynanış
+
+`FullPlaythroughTest` oyunu gerçek bileşenlerle baştan sona oynar. Fare NavMesh ile anahtarı getirir, gardiyan gerçek `gemma3:4b` ile konuşur. Yalnızca oyuncunun yürüyüşü ışınlanarak kısaltılır. Kayıt: [`Docs/test_results/full_playthrough.md`](Docs/test_results/full_playthrough.md).
+
+| Süre (sn) | Adım |
+|---|---|
+| 0,0 | Oyun başladı, 3 muhafız (seed 7) |
+| 4,2 | Fare anahtarı getirdi (hedefe yol 5,4 m) |
+| 4,2 | Hücre kapısı açıldı, 3 muhafız arkadan etkisiz hâle getirildi |
+| 9,9–18,7 | 4 turluk korkutma: korku 20 → 35 → 60 (OPEN_DOOR reddedildi) → 75 (OPEN_DOOR) |
+| 21,6 | Açık kapıdan çıkıldı: **ÖZGÜRSÜN!** |
+
+### 8.5. Ekran görüntüleri
 
 | | |
 |---|---|
