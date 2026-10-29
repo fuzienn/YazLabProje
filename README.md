@@ -537,6 +537,8 @@ Ortalama yanıt süresi tur başına 3–5 saniyedir (Apple M4). İlk istek, mod
 | 9,9–18,7 | 4 turluk korkutma: korku 20 → 35 → 60 (OPEN_DOOR reddedildi) → 75 (OPEN_DOOR) |
 | 21,6 | Açık kapıdan çıkıldı: **ÖZGÜRSÜN!** |
 
+Otomatik testin yanı sıra oyun, gerçek klavye girdisiyle baştan sona elle de oynandı (hücreden çıkış, fareye komut, muhafızların etkisiz hâle getirilmesi, gardiyanla serbest metinli diyalog ve kapının açılması). Akışın tamamı beklendiği gibi ilerledi; takılma, bozulan etkileşim veya çökme gözlenmedi.
+
 ### 8.5. Ekran görüntüleri
 
 | | |

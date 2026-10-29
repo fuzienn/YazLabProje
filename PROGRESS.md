@@ -116,7 +116,7 @@
 - [x] Görev metni (`ObjectiveText`, aşamaya göre), fare durumu, anahtar göstergesi
 - [ ] (İsteğe bağlı) Dekor: fıçı, sandık, kafes (`Objects.png`) — harita değişirse NavMesh/test konumları etkilenir
 - [ ] (İsteğe bağlı) Ses efektleri. Kapı/mangal animasyonları zaten var
-- [x] Tam akış otomatik test ile baştan sona oynandı (`FullPlaythroughTest`, gerçek fare + gerçek LLM, 21.6 sn'de kazanıldı). Elle bir oynanış yine de önerilir
+- [x] Tam akış otomatik test ile baştan sona oynandı (`FullPlaythroughTest`, gerçek fare + gerçek LLM, 21.6 sn'de kazanıldı). Elle tam oynanış da gerçek klavye girdisiyle yapıldı: sorun gözlenmedi
 
 ### Bölüm 7: Testler · Sahip: ortak (ölçüm aracı + fare ölçümü fuzienn, diyalog senaryoları dikmenomer33)
 - [x] EditMode: `TargetSelectorTests` (yol uzunluğu, anahtarsız/etkisiz/ulaşılamaz muhafız) 5/5
