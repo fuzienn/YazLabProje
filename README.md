@@ -468,6 +468,8 @@ sequenceDiagram
 
 Bu yolların her biri otomatik testle sınanır: yanlış port, yönlendirilemeyen adres (zaman aşımı), iptal, olmayan model (gerçek Ollama ile) ve sunucu kapalıyken oyun akışı (`DialogueFlowTests.ServerDown_ShowsError_GameKeepsRunning`).
 
+Sunucu kapalı senaryosu ayrıca canlı oyunda elle de doğrulandı: diyalog sırasında Ollama kapatıldığında oyun çökmedi, yukarıdaki hata mesajını gösterdi ve giriş alanı açık kalarak sunucu yeniden başlatılınca konuşmanın kaldığı yerden sürmesine izin verdi.
+
 ## 8. Testler ve Sonuçlar
 
 ### 8.1. Otomatik testler
