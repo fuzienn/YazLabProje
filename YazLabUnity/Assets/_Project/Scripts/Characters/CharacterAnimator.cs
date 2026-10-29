@@ -24,7 +24,8 @@ namespace DungeonEscape.Characters
 
         public void SetSprites(CharacterSpriteSet set) => sprites = set;
 
-        private void Awake() => _renderer = GetComponent<SpriteRenderer>();
+        // Baska bir bilesen bu nesnenin Awake'inden once Face cagirabilir (ornegin ML ajaninin ilk bolumu)
+        private SpriteRenderer Renderer => _renderer ??= GetComponent<SpriteRenderer>();
 
         public void SetMotion(Vector2 velocity, float deltaTime)
         {
@@ -44,12 +45,12 @@ namespace DungeonEscape.Characters
             if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
                 Facing = Facing.Side;
-                _renderer.flipX = direction.x < 0f;
+                Renderer.flipX = direction.x < 0f;
             }
             else
             {
                 Facing = direction.y > 0f ? Facing.Up : Facing.Down;
-                _renderer.flipX = false;
+                Renderer.flipX = false;
             }
             Apply(0);
         }
@@ -59,7 +60,7 @@ namespace DungeonEscape.Characters
             if (sprites == null) return;
             var frames = sprites.Get(Facing);
             if (frames != null && frame < frames.Length && frames[frame] != null)
-                _renderer.sprite = frames[frame];
+                Renderer.sprite = frames[frame];
         }
     }
 }
