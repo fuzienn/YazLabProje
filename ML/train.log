@@ -1,0 +1,246 @@
+
+            ┐  ╖
+        ╓╖╬│╡  ││╬╖╖
+    ╓╖╬│││││┘  ╬│││││╬╖
+ ╖╬│││││╬╜        ╙╬│││││╖╖                               ╗╗╗
+ ╬╬╬╬╖││╦╖        ╖╬││╗╣╣╣╬      ╟╣╣╬    ╟╣╣╣             ╜╜╜  ╟╣╣
+ ╬╬╬╬╬╬╬╬╖│╬╖╖╓╬╪│╓╣╣╣╣╣╣╣╬      ╟╣╣╬    ╟╣╣╣ ╒╣╣╖╗╣╣╣╗   ╣╣╣ ╣╣╣╣╣╣ ╟╣╣╖   ╣╣╣
+ ╬╬╬╬┐  ╙╬╬╬╬│╓╣╣╣╝╜  ╫╣╣╣╬      ╟╣╣╬    ╟╣╣╣ ╟╣╣╣╙ ╙╣╣╣  ╣╣╣ ╙╟╣╣╜╙  ╫╣╣  ╟╣╣
+ ╬╬╬╬┐     ╙╬╬╣╣      ╫╣╣╣╬      ╟╣╣╬    ╟╣╣╣ ╟╣╣╬   ╣╣╣  ╣╣╣  ╟╣╣     ╣╣╣┌╣╣╜
+ ╬╬╬╜       ╬╬╣╣      ╙╝╣╣╬      ╙╣╣╣╗╖╓╗╣╣╣╜ ╟╣╣╬   ╣╣╣  ╣╣╣  ╟╣╣╦╓    ╣╣╣╣╣
+ ╙   ╓╦╖    ╬╬╣╣   ╓╗╗╖            ╙╝╣╣╣╣╝╜   ╘╝╝╜   ╝╝╝  ╝╝╝   ╙╣╣╣    ╟╣╣╣
+   ╩╬╬╬╬╬╬╦╦╬╬╣╣╗╣╣╣╣╣╣╣╝                                             ╫╣╣╣╣
+      ╙╬╬╬╬╬╬╬╣╣╣╣╣╣╝╜
+          ╙╬╬╬╣╣╣╜
+             ╙
+        
+ Version information:
+  ml-agents: 1.1.0,
+  ml-agents-envs: 1.1.0,
+  Communicator API: 1.5.0,
+  PyTorch: 2.2.2
+I1029 03:26:24.347454  315568 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1029 03:26:24.372202  315570 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1029 03:26:24.384075  315572 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1029 03:26:24.400679  315565 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+[INFO] Connected to Unity environment with package version 4.1.0 and communication version 1.5.0
+[INFO] Connected to Unity environment with package version 4.1.0 and communication version 1.5.0
+[INFO] Connected to Unity environment with package version 4.1.0 and communication version 1.5.0
+[INFO] Connected to Unity environment with package version 4.1.0 and communication version 1.5.0
+[INFO] Connected new brain: RatStealth?team=0
+[INFO] Connected new brain: RatStealth?team=0
+[INFO] Connected new brain: RatStealth?team=0
+[INFO] Connected new brain: RatStealth?team=0
+[INFO] Hyperparameters for behavior name RatStealth: 
+	trainer_type:	ppo
+	hyperparameters:	
+	  batch_size:	1024
+	  buffer_size:	20480
+	  learning_rate:	0.0003
+	  beta:	0.005
+	  epsilon:	0.2
+	  lambd:	0.95
+	  num_epoch:	3
+	  shared_critic:	False
+	  learning_rate_schedule:	linear
+	  beta_schedule:	linear
+	  epsilon_schedule:	linear
+	checkpoint_interval:	100000
+	network_settings:	
+	  normalize:	True
+	  hidden_units:	128
+	  num_layers:	2
+	  vis_encode_type:	simple
+	  memory:	None
+	  goal_conditioning_type:	hyper
+	  deterministic:	False
+	reward_signals:	
+	  extrinsic:	
+	    gamma:	0.99
+	    strength:	1.0
+	    network_settings:	
+	      normalize:	False
+	      hidden_units:	128
+	      num_layers:	2
+	      vis_encode_type:	simple
+	      memory:	None
+	      goal_conditioning_type:	hyper
+	      deterministic:	False
+	init_path:	None
+	keep_checkpoints:	5
+	even_checkpoints:	False
+	max_steps:	3000000
+	time_horizon:	128
+	summary_freq:	10000
+	threaded:	False
+	self_play:	None
+	behavioral_cloning:	None
+[INFO] Resuming from results/rat_stealth/RatStealth.
+[INFO] Resuming training from step 1500047.
+[INFO] RatStealth. Step: 1510000. Time Elapsed: 3.493 s. Mean Reward: 2.556. Std of Reward: 1.247. Training.
+[INFO] RatStealth. Step: 1520000. Time Elapsed: 4.999 s. Mean Reward: 2.471. Std of Reward: 1.591. Training.
+[INFO] RatStealth. Step: 1530000. Time Elapsed: 7.697 s. Mean Reward: 2.476. Std of Reward: 1.603. Training.
+[INFO] RatStealth. Step: 1540000. Time Elapsed: 9.295 s. Mean Reward: 2.520. Std of Reward: 1.420. Training.
+[INFO] RatStealth. Step: 1550000. Time Elapsed: 12.161 s. Mean Reward: 2.518. Std of Reward: 1.584. Training.
+[INFO] RatStealth. Step: 1560000. Time Elapsed: 13.760 s. Mean Reward: 2.662. Std of Reward: 1.495. Training.
+[INFO] RatStealth. Step: 1570000. Time Elapsed: 16.534 s. Mean Reward: 2.654. Std of Reward: 1.333. Training.
+[INFO] RatStealth. Step: 1580000. Time Elapsed: 18.160 s. Mean Reward: 2.492. Std of Reward: 1.618. Training.
+[INFO] RatStealth. Step: 1590000. Time Elapsed: 20.998 s. Mean Reward: 2.619. Std of Reward: 1.339. Training.
+[INFO] RatStealth. Step: 1600000. Time Elapsed: 22.646 s. Mean Reward: 2.469. Std of Reward: 1.499. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-1599982.onnx
+[INFO] RatStealth. Step: 1610000. Time Elapsed: 25.553 s. Mean Reward: 2.420. Std of Reward: 1.534. Training.
+[INFO] RatStealth. Step: 1620000. Time Elapsed: 27.243 s. Mean Reward: 2.268. Std of Reward: 1.967. Training.
+[INFO] RatStealth. Step: 1630000. Time Elapsed: 29.984 s. Mean Reward: 2.426. Std of Reward: 1.848. Training.
+[INFO] RatStealth. Step: 1640000. Time Elapsed: 31.651 s. Mean Reward: 2.390. Std of Reward: 1.564. Training.
+[INFO] RatStealth. Step: 1650000. Time Elapsed: 34.526 s. Mean Reward: 2.550. Std of Reward: 1.427. Training.
+[INFO] RatStealth. Step: 1660000. Time Elapsed: 36.310 s. Mean Reward: 2.495. Std of Reward: 1.581. Training.
+[INFO] RatStealth. Step: 1670000. Time Elapsed: 39.110 s. Mean Reward: 2.372. Std of Reward: 1.682. Training.
+[INFO] RatStealth. Step: 1680000. Time Elapsed: 40.841 s. Mean Reward: 2.425. Std of Reward: 1.797. Training.
+[INFO] RatStealth. Step: 1690000. Time Elapsed: 43.638 s. Mean Reward: 2.436. Std of Reward: 1.909. Training.
+[INFO] RatStealth. Step: 1700000. Time Elapsed: 45.394 s. Mean Reward: 2.404. Std of Reward: 1.782. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-1699970.onnx
+[INFO] RatStealth. Step: 1710000. Time Elapsed: 48.211 s. Mean Reward: 2.596. Std of Reward: 1.526. Training.
+[INFO] RatStealth. Step: 1720000. Time Elapsed: 49.907 s. Mean Reward: 2.513. Std of Reward: 1.470. Training.
+[INFO] RatStealth. Step: 1730000. Time Elapsed: 52.839 s. Mean Reward: 2.561. Std of Reward: 1.537. Training.
+[INFO] RatStealth. Step: 1740000. Time Elapsed: 54.545 s. Mean Reward: 2.543. Std of Reward: 1.605. Training.
+[INFO] RatStealth. Step: 1750000. Time Elapsed: 57.471 s. Mean Reward: 2.421. Std of Reward: 1.746. Training.
+[INFO] RatStealth. Step: 1760000. Time Elapsed: 59.177 s. Mean Reward: 2.510. Std of Reward: 1.530. Training.
+[INFO] RatStealth. Step: 1770000. Time Elapsed: 62.000 s. Mean Reward: 2.365. Std of Reward: 2.076. Training.
+[INFO] RatStealth. Step: 1780000. Time Elapsed: 63.744 s. Mean Reward: 2.506. Std of Reward: 1.395. Training.
+[INFO] RatStealth. Step: 1790000. Time Elapsed: 66.591 s. Mean Reward: 2.612. Std of Reward: 1.561. Training.
+[INFO] RatStealth. Step: 1800000. Time Elapsed: 68.392 s. Mean Reward: 2.622. Std of Reward: 1.470. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-1799980.onnx
+[INFO] RatStealth. Step: 1810000. Time Elapsed: 71.254 s. Mean Reward: 2.641. Std of Reward: 1.463. Training.
+[INFO] RatStealth. Step: 1820000. Time Elapsed: 72.972 s. Mean Reward: 2.487. Std of Reward: 1.577. Training.
+[INFO] RatStealth. Step: 1830000. Time Elapsed: 75.813 s. Mean Reward: 2.439. Std of Reward: 1.689. Training.
+[INFO] RatStealth. Step: 1840000. Time Elapsed: 77.604 s. Mean Reward: 2.546. Std of Reward: 1.617. Training.
+[INFO] RatStealth. Step: 1850000. Time Elapsed: 80.458 s. Mean Reward: 2.573. Std of Reward: 1.649. Training.
+[INFO] RatStealth. Step: 1860000. Time Elapsed: 82.224 s. Mean Reward: 2.494. Std of Reward: 1.629. Training.
+[INFO] RatStealth. Step: 1870000. Time Elapsed: 85.067 s. Mean Reward: 2.507. Std of Reward: 1.572. Training.
+[INFO] RatStealth. Step: 1880000. Time Elapsed: 86.830 s. Mean Reward: 2.534. Std of Reward: 1.424. Training.
+[INFO] RatStealth. Step: 1890000. Time Elapsed: 89.672 s. Mean Reward: 2.456. Std of Reward: 1.639. Training.
+[INFO] RatStealth. Step: 1900000. Time Elapsed: 91.434 s. Mean Reward: 2.510. Std of Reward: 1.575. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-1899987.onnx
+[INFO] RatStealth. Step: 1910000. Time Elapsed: 93.178 s. Mean Reward: 2.560. Std of Reward: 1.515. Training.
+[INFO] RatStealth. Step: 1920000. Time Elapsed: 96.083 s. Mean Reward: 2.451. Std of Reward: 1.653. Training.
+[INFO] RatStealth. Step: 1930000. Time Elapsed: 97.803 s. Mean Reward: 2.649. Std of Reward: 1.531. Training.
+[INFO] RatStealth. Step: 1940000. Time Elapsed: 100.711 s. Mean Reward: 2.582. Std of Reward: 1.452. Training.
+[INFO] RatStealth. Step: 1950000. Time Elapsed: 102.422 s. Mean Reward: 2.474. Std of Reward: 1.655. Training.
+[INFO] RatStealth. Step: 1960000. Time Elapsed: 105.379 s. Mean Reward: 2.604. Std of Reward: 1.378. Training.
+[INFO] RatStealth. Step: 1970000. Time Elapsed: 107.124 s. Mean Reward: 2.478. Std of Reward: 1.423. Training.
+[INFO] RatStealth. Step: 1980000. Time Elapsed: 109.998 s. Mean Reward: 2.537. Std of Reward: 1.682. Training.
+[INFO] RatStealth. Step: 1990000. Time Elapsed: 111.706 s. Mean Reward: 2.603. Std of Reward: 1.527. Training.
+[INFO] RatStealth. Step: 2000000. Time Elapsed: 114.679 s. Mean Reward: 2.476. Std of Reward: 1.502. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-1999977.onnx
+[INFO] RatStealth. Step: 2010000. Time Elapsed: 116.489 s. Mean Reward: 2.474. Std of Reward: 1.551. Training.
+[INFO] RatStealth. Step: 2020000. Time Elapsed: 119.327 s. Mean Reward: 2.762. Std of Reward: 1.244. Training.
+[INFO] RatStealth. Step: 2030000. Time Elapsed: 121.090 s. Mean Reward: 2.543. Std of Reward: 1.611. Training.
+[INFO] RatStealth. Step: 2040000. Time Elapsed: 123.992 s. Mean Reward: 2.538. Std of Reward: 1.527. Training.
+[INFO] RatStealth. Step: 2050000. Time Elapsed: 125.760 s. Mean Reward: 2.655. Std of Reward: 1.442. Training.
+[INFO] RatStealth. Step: 2060000. Time Elapsed: 128.660 s. Mean Reward: 2.471. Std of Reward: 1.687. Training.
+[INFO] RatStealth. Step: 2070000. Time Elapsed: 130.339 s. Mean Reward: 2.546. Std of Reward: 1.630. Training.
+[INFO] RatStealth. Step: 2080000. Time Elapsed: 133.302 s. Mean Reward: 2.640. Std of Reward: 1.604. Training.
+[INFO] RatStealth. Step: 2090000. Time Elapsed: 135.077 s. Mean Reward: 2.667. Std of Reward: 1.514. Training.
+[INFO] RatStealth. Step: 2100000. Time Elapsed: 137.931 s. Mean Reward: 2.555. Std of Reward: 1.645. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-2099979.onnx
+[INFO] RatStealth. Step: 2110000. Time Elapsed: 139.703 s. Mean Reward: 2.581. Std of Reward: 1.610. Training.
+[INFO] RatStealth. Step: 2120000. Time Elapsed: 142.573 s. Mean Reward: 2.465. Std of Reward: 1.637. Training.
+[INFO] RatStealth. Step: 2130000. Time Elapsed: 144.334 s. Mean Reward: 2.722. Std of Reward: 1.224. Training.
+[INFO] RatStealth. Step: 2140000. Time Elapsed: 147.261 s. Mean Reward: 2.594. Std of Reward: 1.652. Training.
+[INFO] RatStealth. Step: 2150000. Time Elapsed: 148.976 s. Mean Reward: 2.593. Std of Reward: 1.450. Training.
+[INFO] RatStealth. Step: 2160000. Time Elapsed: 151.887 s. Mean Reward: 2.542. Std of Reward: 1.573. Training.
+[INFO] RatStealth. Step: 2170000. Time Elapsed: 153.738 s. Mean Reward: 2.551. Std of Reward: 1.638. Training.
+[INFO] RatStealth. Step: 2180000. Time Elapsed: 156.512 s. Mean Reward: 2.462. Std of Reward: 1.730. Training.
+[INFO] RatStealth. Step: 2190000. Time Elapsed: 158.345 s. Mean Reward: 2.591. Std of Reward: 1.508. Training.
+[INFO] RatStealth. Step: 2200000. Time Elapsed: 161.227 s. Mean Reward: 2.457. Std of Reward: 1.706. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-2199984.onnx
+[INFO] RatStealth. Step: 2210000. Time Elapsed: 162.917 s. Mean Reward: 2.558. Std of Reward: 1.665. Training.
+[INFO] RatStealth. Step: 2220000. Time Elapsed: 166.015 s. Mean Reward: 2.686. Std of Reward: 1.252. Training.
+[INFO] RatStealth. Step: 2230000. Time Elapsed: 167.642 s. Mean Reward: 2.559. Std of Reward: 1.504. Training.
+[INFO] RatStealth. Step: 2240000. Time Elapsed: 170.571 s. Mean Reward: 2.632. Std of Reward: 1.361. Training.
+[INFO] RatStealth. Step: 2250000. Time Elapsed: 172.302 s. Mean Reward: 2.526. Std of Reward: 1.567. Training.
+[INFO] RatStealth. Step: 2260000. Time Elapsed: 175.240 s. Mean Reward: 2.386. Std of Reward: 1.660. Training.
+[INFO] RatStealth. Step: 2270000. Time Elapsed: 176.986 s. Mean Reward: 2.646. Std of Reward: 1.480. Training.
+[INFO] RatStealth. Step: 2280000. Time Elapsed: 179.934 s. Mean Reward: 2.614. Std of Reward: 1.318. Training.
+[INFO] RatStealth. Step: 2290000. Time Elapsed: 181.658 s. Mean Reward: 2.500. Std of Reward: 1.732. Training.
+[INFO] RatStealth. Step: 2300000. Time Elapsed: 183.480 s. Mean Reward: 2.552. Std of Reward: 1.527. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-2299994.onnx
+[INFO] RatStealth. Step: 2310000. Time Elapsed: 186.334 s. Mean Reward: 2.558. Std of Reward: 1.487. Training.
+[INFO] RatStealth. Step: 2320000. Time Elapsed: 188.211 s. Mean Reward: 2.584. Std of Reward: 1.213. Training.
+[INFO] RatStealth. Step: 2330000. Time Elapsed: 191.108 s. Mean Reward: 2.413. Std of Reward: 1.806. Training.
+[INFO] RatStealth. Step: 2340000. Time Elapsed: 192.940 s. Mean Reward: 2.479. Std of Reward: 1.553. Training.
+[INFO] RatStealth. Step: 2350000. Time Elapsed: 196.053 s. Mean Reward: 2.553. Std of Reward: 1.340. Training.
+[INFO] RatStealth. Step: 2360000. Time Elapsed: 197.803 s. Mean Reward: 2.491. Std of Reward: 1.521. Training.
+[INFO] RatStealth. Step: 2370000. Time Elapsed: 200.786 s. Mean Reward: 2.478. Std of Reward: 1.648. Training.
+[INFO] RatStealth. Step: 2380000. Time Elapsed: 202.653 s. Mean Reward: 2.493. Std of Reward: 1.517. Training.
+[INFO] RatStealth. Step: 2390000. Time Elapsed: 205.664 s. Mean Reward: 2.622. Std of Reward: 1.533. Training.
+[INFO] RatStealth. Step: 2400000. Time Elapsed: 207.511 s. Mean Reward: 2.676. Std of Reward: 1.399. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-2399990.onnx
+[INFO] RatStealth. Step: 2410000. Time Elapsed: 210.725 s. Mean Reward: 2.331. Std of Reward: 1.788. Training.
+[INFO] RatStealth. Step: 2420000. Time Elapsed: 213.298 s. Mean Reward: 2.583. Std of Reward: 1.601. Training.
+[INFO] RatStealth. Step: 2430000. Time Elapsed: 216.876 s. Mean Reward: 2.456. Std of Reward: 1.736. Training.
+[INFO] RatStealth. Step: 2440000. Time Elapsed: 218.910 s. Mean Reward: 2.570. Std of Reward: 1.482. Training.
+[INFO] RatStealth. Step: 2450000. Time Elapsed: 222.308 s. Mean Reward: 2.661. Std of Reward: 1.526. Training.
+[INFO] RatStealth. Step: 2460000. Time Elapsed: 224.150 s. Mean Reward: 2.600. Std of Reward: 1.330. Training.
+[INFO] RatStealth. Step: 2470000. Time Elapsed: 227.142 s. Mean Reward: 2.518. Std of Reward: 1.504. Training.
+[INFO] RatStealth. Step: 2480000. Time Elapsed: 229.175 s. Mean Reward: 2.428. Std of Reward: 1.689. Training.
+[INFO] RatStealth. Step: 2490000. Time Elapsed: 232.438 s. Mean Reward: 2.667. Std of Reward: 1.326. Training.
+[INFO] RatStealth. Step: 2500000. Time Elapsed: 234.213 s. Mean Reward: 2.672. Std of Reward: 1.508. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-2499993.onnx
+[INFO] RatStealth. Step: 2510000. Time Elapsed: 237.362 s. Mean Reward: 2.463. Std of Reward: 1.500. Training.
+[INFO] RatStealth. Step: 2520000. Time Elapsed: 239.213 s. Mean Reward: 2.519. Std of Reward: 1.486. Training.
+[INFO] RatStealth. Step: 2530000. Time Elapsed: 242.398 s. Mean Reward: 2.400. Std of Reward: 1.606. Training.
+[INFO] RatStealth. Step: 2540000. Time Elapsed: 244.516 s. Mean Reward: 2.645. Std of Reward: 1.416. Training.
+[INFO] RatStealth. Step: 2550000. Time Elapsed: 247.658 s. Mean Reward: 2.718. Std of Reward: 1.393. Training.
+[INFO] RatStealth. Step: 2560000. Time Elapsed: 249.621 s. Mean Reward: 2.667. Std of Reward: 1.496. Training.
+[INFO] RatStealth. Step: 2570000. Time Elapsed: 252.699 s. Mean Reward: 2.662. Std of Reward: 1.664. Training.
+[INFO] RatStealth. Step: 2580000. Time Elapsed: 254.611 s. Mean Reward: 2.534. Std of Reward: 1.457. Training.
+[INFO] RatStealth. Step: 2590000. Time Elapsed: 257.695 s. Mean Reward: 2.616. Std of Reward: 1.521. Training.
+[INFO] RatStealth. Step: 2600000. Time Elapsed: 259.594 s. Mean Reward: 2.563. Std of Reward: 1.405. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-2599989.onnx
+[INFO] RatStealth. Step: 2610000. Time Elapsed: 262.853 s. Mean Reward: 2.628. Std of Reward: 1.595. Training.
+[INFO] RatStealth. Step: 2620000. Time Elapsed: 265.336 s. Mean Reward: 2.612. Std of Reward: 1.365. Training.
+[INFO] RatStealth. Step: 2630000. Time Elapsed: 268.867 s. Mean Reward: 2.602. Std of Reward: 1.266. Training.
+[INFO] RatStealth. Step: 2640000. Time Elapsed: 270.765 s. Mean Reward: 2.654. Std of Reward: 1.531. Training.
+[INFO] RatStealth. Step: 2650000. Time Elapsed: 273.918 s. Mean Reward: 2.550. Std of Reward: 1.520. Training.
+[INFO] RatStealth. Step: 2660000. Time Elapsed: 275.972 s. Mean Reward: 2.575. Std of Reward: 1.769. Training.
+[INFO] RatStealth. Step: 2670000. Time Elapsed: 279.178 s. Mean Reward: 2.529. Std of Reward: 1.560. Training.
+[INFO] RatStealth. Step: 2680000. Time Elapsed: 281.394 s. Mean Reward: 2.558. Std of Reward: 1.834. Training.
+[INFO] RatStealth. Step: 2690000. Time Elapsed: 284.790 s. Mean Reward: 2.770. Std of Reward: 1.429. Training.
+[INFO] RatStealth. Step: 2700000. Time Elapsed: 287.187 s. Mean Reward: 2.587. Std of Reward: 1.445. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-2699994.onnx
+[INFO] RatStealth. Step: 2710000. Time Elapsed: 289.651 s. Mean Reward: 2.658. Std of Reward: 1.464. Training.
+[INFO] RatStealth. Step: 2720000. Time Elapsed: 293.177 s. Mean Reward: 2.640. Std of Reward: 1.565. Training.
+[INFO] RatStealth. Step: 2730000. Time Elapsed: 295.272 s. Mean Reward: 2.633. Std of Reward: 1.355. Training.
+[INFO] RatStealth. Step: 2740000. Time Elapsed: 298.378 s. Mean Reward: 2.640. Std of Reward: 1.685. Training.
+[INFO] RatStealth. Step: 2750000. Time Elapsed: 300.505 s. Mean Reward: 2.605. Std of Reward: 1.368. Training.
+[INFO] RatStealth. Step: 2760000. Time Elapsed: 303.845 s. Mean Reward: 2.672. Std of Reward: 1.437. Training.
+[INFO] RatStealth. Step: 2770000. Time Elapsed: 306.073 s. Mean Reward: 2.664. Std of Reward: 1.570. Training.
+[INFO] RatStealth. Step: 2780000. Time Elapsed: 309.523 s. Mean Reward: 2.498. Std of Reward: 1.703. Training.
+[INFO] RatStealth. Step: 2790000. Time Elapsed: 312.389 s. Mean Reward: 2.484. Std of Reward: 1.484. Training.
+[INFO] RatStealth. Step: 2800000. Time Elapsed: 315.958 s. Mean Reward: 2.559. Std of Reward: 1.670. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-2799995.onnx
+[INFO] RatStealth. Step: 2810000. Time Elapsed: 317.947 s. Mean Reward: 2.598. Std of Reward: 1.683. Training.
+[INFO] RatStealth. Step: 2820000. Time Elapsed: 321.250 s. Mean Reward: 2.608. Std of Reward: 1.558. Training.
+[INFO] RatStealth. Step: 2830000. Time Elapsed: 323.196 s. Mean Reward: 2.554. Std of Reward: 1.479. Training.
+[INFO] RatStealth. Step: 2840000. Time Elapsed: 326.454 s. Mean Reward: 2.468. Std of Reward: 1.676. Training.
+[INFO] RatStealth. Step: 2850000. Time Elapsed: 328.494 s. Mean Reward: 2.676. Std of Reward: 1.618. Training.
+[INFO] RatStealth. Step: 2860000. Time Elapsed: 331.875 s. Mean Reward: 2.581. Std of Reward: 1.462. Training.
+[INFO] RatStealth. Step: 2870000. Time Elapsed: 333.882 s. Mean Reward: 2.604. Std of Reward: 1.418. Training.
+[INFO] RatStealth. Step: 2880000. Time Elapsed: 337.154 s. Mean Reward: 2.518. Std of Reward: 1.523. Training.
+[INFO] RatStealth. Step: 2890000. Time Elapsed: 339.138 s. Mean Reward: 2.461. Std of Reward: 1.683. Training.
+[INFO] RatStealth. Step: 2900000. Time Elapsed: 342.305 s. Mean Reward: 2.569. Std of Reward: 1.519. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-2899973.onnx
+[INFO] RatStealth. Step: 2910000. Time Elapsed: 344.303 s. Mean Reward: 2.703. Std of Reward: 1.223. Training.
+[INFO] RatStealth. Step: 2920000. Time Elapsed: 347.478 s. Mean Reward: 2.746. Std of Reward: 1.432. Training.
+[INFO] RatStealth. Step: 2930000. Time Elapsed: 349.778 s. Mean Reward: 2.659. Std of Reward: 1.412. Training.
+[INFO] RatStealth. Step: 2940000. Time Elapsed: 353.009 s. Mean Reward: 2.762. Std of Reward: 1.353. Training.
+[INFO] RatStealth. Step: 2950000. Time Elapsed: 355.137 s. Mean Reward: 2.720. Std of Reward: 1.258. Training.
+[INFO] RatStealth. Step: 2960000. Time Elapsed: 358.442 s. Mean Reward: 2.644. Std of Reward: 1.432. Training.
+[INFO] RatStealth. Step: 2970000. Time Elapsed: 360.995 s. Mean Reward: 2.711. Std of Reward: 1.390. Training.
+[INFO] RatStealth. Step: 2980000. Time Elapsed: 364.213 s. Mean Reward: 2.592. Std of Reward: 1.410. Training.
+[INFO] RatStealth. Step: 2990000. Time Elapsed: 366.176 s. Mean Reward: 2.550. Std of Reward: 1.621. Training.
+[INFO] RatStealth. Step: 3000000. Time Elapsed: 369.430 s. Mean Reward: 2.796. Std of Reward: 1.328. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-2999988.onnx
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-3000006.onnx
+[INFO] Copied results/rat_stealth/RatStealth/RatStealth-3000006.onnx to results/rat_stealth/RatStealth.onnx.

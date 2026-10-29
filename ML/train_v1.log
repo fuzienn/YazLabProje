@@ -1,0 +1,165 @@
+
+            ┐  ╖
+        ╓╖╬│╡  ││╬╖╖
+    ╓╖╬│││││┘  ╬│││││╬╖
+ ╖╬│││││╬╜        ╙╬│││││╖╖                               ╗╗╗
+ ╬╬╬╬╖││╦╖        ╖╬││╗╣╣╣╬      ╟╣╣╬    ╟╣╣╣             ╜╜╜  ╟╣╣
+ ╬╬╬╬╬╬╬╬╖│╬╖╖╓╬╪│╓╣╣╣╣╣╣╣╬      ╟╣╣╬    ╟╣╣╣ ╒╣╣╖╗╣╣╣╗   ╣╣╣ ╣╣╣╣╣╣ ╟╣╣╖   ╣╣╣
+ ╬╬╬╬┐  ╙╬╬╬╬│╓╣╣╣╝╜  ╫╣╣╣╬      ╟╣╣╬    ╟╣╣╣ ╟╣╣╣╙ ╙╣╣╣  ╣╣╣ ╙╟╣╣╜╙  ╫╣╣  ╟╣╣
+ ╬╬╬╬┐     ╙╬╬╣╣      ╫╣╣╣╬      ╟╣╣╬    ╟╣╣╣ ╟╣╣╬   ╣╣╣  ╣╣╣  ╟╣╣     ╣╣╣┌╣╣╜
+ ╬╬╬╜       ╬╬╣╣      ╙╝╣╣╬      ╙╣╣╣╗╖╓╗╣╣╣╜ ╟╣╣╬   ╣╣╣  ╣╣╣  ╟╣╣╦╓    ╣╣╣╣╣
+ ╙   ╓╦╖    ╬╬╣╣   ╓╗╗╖            ╙╝╣╣╣╣╝╜   ╘╝╝╜   ╝╝╝  ╝╝╝   ╙╣╣╣    ╟╣╣╣
+   ╩╬╬╬╬╬╬╦╦╬╬╣╣╗╣╣╣╣╣╣╣╝                                             ╫╣╣╣╣
+      ╙╬╬╬╬╬╬╬╣╣╣╣╣╣╝╜
+          ╙╬╬╬╣╣╣╜
+             ╙
+        
+ Version information:
+  ml-agents: 1.1.0,
+  ml-agents-envs: 1.1.0,
+  Communicator API: 1.5.0,
+  PyTorch: 2.2.2
+I1029 00:54:05.263820  260757 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1029 00:54:05.290488  260759 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1029 00:54:05.291605  260763 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1029 00:54:05.297748  260761 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+[INFO] Connected to Unity environment with package version 4.1.0 and communication version 1.5.0
+[INFO] Connected to Unity environment with package version 4.1.0 and communication version 1.5.0
+[INFO] Connected to Unity environment with package version 4.1.0 and communication version 1.5.0
+[INFO] Connected to Unity environment with package version 4.1.0 and communication version 1.5.0
+[INFO] Connected new brain: RatStealth?team=0
+[INFO] Connected new brain: RatStealth?team=0
+[INFO] Connected new brain: RatStealth?team=0
+[INFO] Connected new brain: RatStealth?team=0
+[WARNING] Deleting TensorBoard data events.out.tfevents.1793224360.Huseyin-MacBook-Air.local.14866.0 that was left over from a previous run.
+[INFO] Hyperparameters for behavior name RatStealth: 
+	trainer_type:	ppo
+	hyperparameters:	
+	  batch_size:	1024
+	  buffer_size:	20480
+	  learning_rate:	0.0003
+	  beta:	0.005
+	  epsilon:	0.2
+	  lambd:	0.95
+	  num_epoch:	3
+	  shared_critic:	False
+	  learning_rate_schedule:	linear
+	  beta_schedule:	linear
+	  epsilon_schedule:	linear
+	checkpoint_interval:	100000
+	network_settings:	
+	  normalize:	True
+	  hidden_units:	128
+	  num_layers:	2
+	  vis_encode_type:	simple
+	  memory:	None
+	  goal_conditioning_type:	hyper
+	  deterministic:	False
+	reward_signals:	
+	  extrinsic:	
+	    gamma:	0.99
+	    strength:	1.0
+	    network_settings:	
+	      normalize:	False
+	      hidden_units:	128
+	      num_layers:	2
+	      vis_encode_type:	simple
+	      memory:	None
+	      goal_conditioning_type:	hyper
+	      deterministic:	False
+	init_path:	None
+	keep_checkpoints:	5
+	even_checkpoints:	False
+	max_steps:	1500000
+	time_horizon:	128
+	summary_freq:	10000
+	threaded:	False
+	self_play:	None
+	behavioral_cloning:	None
+[INFO] RatStealth. Step: 10000. Time Elapsed: 3.814 s. Mean Reward: -1.646. Std of Reward: 0.399. Training.
+[INFO] RatStealth. Step: 20000. Time Elapsed: 5.547 s. Mean Reward: -1.255. Std of Reward: 0.215. Training.
+[INFO] RatStealth. Step: 30000. Time Elapsed: 9.751 s. Mean Reward: -1.346. Std of Reward: 0.360. Training.
+[INFO] RatStealth. Step: 40000. Time Elapsed: 10.979 s. Mean Reward: -1.270. Std of Reward: 0.324. Training.
+[INFO] RatStealth. Step: 50000. Time Elapsed: 13.985 s. Mean Reward: -1.358. Std of Reward: 0.378. Training.
+[INFO] RatStealth. Step: 60000. Time Elapsed: 15.946 s. Mean Reward: -1.218. Std of Reward: 0.347. Training.
+[INFO] RatStealth. Step: 70000. Time Elapsed: 18.924 s. Mean Reward: -1.349. Std of Reward: 0.404. Training.
+[INFO] RatStealth. Step: 80000. Time Elapsed: 20.801 s. Mean Reward: -1.208. Std of Reward: 0.345. Training.
+[INFO] RatStealth. Step: 90000. Time Elapsed: 23.649 s. Mean Reward: -1.292. Std of Reward: 0.441. Training.
+[INFO] RatStealth. Step: 100000. Time Elapsed: 25.604 s. Mean Reward: -1.223. Std of Reward: 0.372. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-99883.onnx
+[INFO] RatStealth. Step: 110000. Time Elapsed: 28.737 s. Mean Reward: -1.272. Std of Reward: 0.333. Training.
+[INFO] RatStealth. Step: 120000. Time Elapsed: 30.595 s. Mean Reward: -1.306. Std of Reward: 0.478. Training.
+[INFO] RatStealth. Step: 130000. Time Elapsed: 33.894 s. Mean Reward: -1.383. Std of Reward: 0.414. Training.
+[INFO] RatStealth. Step: 140000. Time Elapsed: 35.842 s. Mean Reward: -1.384. Std of Reward: 0.453. Training.
+[INFO] RatStealth. Step: 150000. Time Elapsed: 39.206 s. Mean Reward: -1.196. Std of Reward: 0.401. Training.
+[INFO] RatStealth. Step: 160000. Time Elapsed: 41.063 s. Mean Reward: -1.277. Std of Reward: 0.496. Training.
+[INFO] RatStealth. Step: 170000. Time Elapsed: 44.465 s. Mean Reward: -1.476. Std of Reward: 0.469. Training.
+[INFO] RatStealth. Step: 180000. Time Elapsed: 46.379 s. Mean Reward: -1.238. Std of Reward: 0.377. Training.
+[INFO] RatStealth. Step: 190000. Time Elapsed: 49.625 s. Mean Reward: -1.323. Std of Reward: 0.509. Training.
+[INFO] RatStealth. Step: 200000. Time Elapsed: 51.482 s. Mean Reward: -1.278. Std of Reward: 0.479. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-199903.onnx
+[INFO] RatStealth. Step: 210000. Time Elapsed: 54.943 s. Mean Reward: -1.311. Std of Reward: 0.434. Training.
+[INFO] RatStealth. Step: 220000. Time Elapsed: 56.669 s. Mean Reward: -1.141. Std of Reward: 0.410. Training.
+[INFO] RatStealth. Step: 230000. Time Elapsed: 59.753 s. Mean Reward: -1.257. Std of Reward: 0.423. Training.
+[INFO] RatStealth. Step: 240000. Time Elapsed: 61.628 s. Mean Reward: -1.163. Std of Reward: 0.361. Training.
+[INFO] RatStealth. Step: 250000. Time Elapsed: 64.821 s. Mean Reward: -1.173. Std of Reward: 0.444. Training.
+[INFO] RatStealth. Step: 260000. Time Elapsed: 66.757 s. Mean Reward: -1.267. Std of Reward: 0.392. Training.
+[INFO] RatStealth. Step: 270000. Time Elapsed: 69.917 s. Mean Reward: -1.332. Std of Reward: 0.501. Training.
+[INFO] RatStealth. Step: 280000. Time Elapsed: 71.785 s. Mean Reward: -1.419. Std of Reward: 0.500. Training.
+[INFO] RatStealth. Step: 290000. Time Elapsed: 74.898 s. Mean Reward: -1.396. Std of Reward: 0.555. Training.
+[INFO] RatStealth. Step: 300000. Time Elapsed: 76.812 s. Mean Reward: -1.317. Std of Reward: 0.494. Training.
+[INFO] Exported results/rat_stealth/RatStealth/RatStealth-299996.onnx
+[INFO] RatStealth. Step: 310000. Time Elapsed: 80.360 s. Mean Reward: -1.135. Std of Reward: 0.414. Training.
+[INFO] RatStealth. Step: 320000. Time Elapsed: 82.824 s. Mean Reward: -1.165. Std of Reward: 0.356. Training.
+[INFO] RatStealth. Step: 330000. Time Elapsed: 86.179 s. Mean Reward: -1.353. Std of Reward: 0.523. Training.
+[INFO] RatStealth. Step: 340000. Time Elapsed: 88.435 s. Mean Reward: -1.235. Std of Reward: 0.407. Training.
+[INFO] RatStealth. Step: 350000. Time Elapsed: 92.270 s. Mean Reward: -1.305. Std of Reward: 0.471. Training.
+[INFO] RatStealth. Step: 360000. Time Elapsed: 94.543 s. Mean Reward: -1.263. Std of Reward: 0.499. Training.
+[INFO] RatStealth. Step: 370000. Time Elapsed: 98.180 s. Mean Reward: -1.359. Std of Reward: 0.478. Training.
+[INFO] RatStealth. Step: 380000. Time Elapsed: 100.602 s. Mean Reward: -1.305. Std of Reward: 0.591. Training.
+[INFO] RatStealth. Step: 390000. Time Elapsed: 102.768 s. Mean Reward: -1.272. Std of Reward: 0.502. Training.
+./train.sh: line 16: 14940 Terminated: 15          .venv/bin/mlagents-learn config/rat_stealth.yaml --env="$ENV_PATH" --run-id="$RUN_ID" --results-dir=results --force
+[ERROR] UnityEnvironment worker 3: environment raised an unexpected exception.
+Traceback (most recent call last):
+  File "/Users/huseyinmelihguzel/Documents/YazLabProje-main/ML/.venv/lib/python3.10/site-packages/mlagents/trainers/subprocess_env_manager.py", line 175, in worker
+    req: EnvironmentRequest = parent_conn.recv()
+  File "/Users/huseyinmelihguzel/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/Users/huseyinmelihguzel/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/multiprocessing/connection.py", line 414, in _recv_bytes
+    buf = self._recv(4)
+  File "/Users/huseyinmelihguzel/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+[ERROR] UnityEnvironment worker 1: environment raised an unexpected exception.
+Traceback (most recent call last):
+  File "/Users/huseyinmelihguzel/Documents/YazLabProje-main/ML/.venv/lib/python3.10/site-packages/mlagents/trainers/subprocess_env_manager.py", line 175, in worker
+    req: EnvironmentRequest = parent_conn.recv()
+  File "/Users/huseyinmelihguzel/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/Users/huseyinmelihguzel/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/multiprocessing/connection.py", line 414, in _recv_bytes
+    buf = self._recv(4)
+  File "/Users/huseyinmelihguzel/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+[ERROR] UnityEnvironment worker 2: environment raised an unexpected exception.
+Traceback (most recent call last):
+  File "/Users/huseyinmelihguzel/Documents/YazLabProje-main/ML/.venv/lib/python3.10/site-packages/mlagents/trainers/subprocess_env_manager.py", line 175, in worker
+    req: EnvironmentRequest = parent_conn.recv()
+  File "/Users/huseyinmelihguzel/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/Users/huseyinmelihguzel/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/multiprocessing/connection.py", line 414, in _recv_bytes
+    buf = self._recv(4)
+  File "/Users/huseyinmelihguzel/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+[ERROR] UnityEnvironment worker 0: environment raised an unexpected exception.
+Traceback (most recent call last):
+  File "/Users/huseyinmelihguzel/Documents/YazLabProje-main/ML/.venv/lib/python3.10/site-packages/mlagents/trainers/subprocess_env_manager.py", line 175, in worker
+    req: EnvironmentRequest = parent_conn.recv()
+  File "/Users/huseyinmelihguzel/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/Users/huseyinmelihguzel/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/multiprocessing/connection.py", line 414, in _recv_bytes
+    buf = self._recv(4)
+  File "/Users/huseyinmelihguzel/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
