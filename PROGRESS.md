@@ -116,7 +116,7 @@
 - [x] Görev metni (`ObjectiveText`, aşamaya göre), fare durumu, anahtar göstergesi
 - [ ] (İsteğe bağlı) Dekor: fıçı, sandık, kafes (`Objects.png`) — harita değişirse NavMesh/test konumları etkilenir
 - [ ] (İsteğe bağlı) Ses efektleri. Kapı/mangal animasyonları zaten var
-- [ ] Tam akış elle baştan sona oynanmalı (parçalar testlerle doğrulandı; Unity odaktayken Play ile kullanıcı dener)
+- [x] Tam akış otomatik test ile baştan sona oynandı (`FullPlaythroughTest`, gerçek fare + gerçek LLM, 21.6 sn'de kazanıldı). Elle bir oynanış yine de önerilir
 
 ### Bölüm 7: Testler · Sahip: ortak (ölçüm aracı + fare ölçümü fuzienn, diyalog senaryoları dikmenomer33)
 - [x] EditMode: `TargetSelectorTests` (yol uzunluğu, anahtarsız/etkisiz/ulaşılamaz muhafız) 5/5
@@ -143,8 +143,15 @@
 - [x] Sonuç ve tartışma; model seçim gerekçesi
 - [ ] Teslim zip'i: kod + build + rapor (`YazLabProje_Teslim.zip`, proje kökünde, gitignore'da). Son sürüm teslimden hemen önce yeniden üretilmeli
 
-### Bölüm 9 (Bonus +10): ML-Agents · İsteğe bağlı
-- [ ] Fare için RL ortamı, ödül fonksiyonu, eğitim, TensorBoard ödül grafiği
+### Bölüm 9 (Bonus +10): ML-Agents · Sahip: dikmenomer33
+- [x] ML-Agents 4.1.0 paketi; Python 3.10 venv (`ML/.venv`, mlagents 1.1.0, torch 2.2.2 sabit, grpcio override)
+- [x] Eğitim ortamı: `RatTraining` sahnesi, 12 arena, `RatStealthAgent` (RayPerceptionSensor2D + 9 vektör, sürekli 2B eylem), `TrainingGuard`
+- [x] Ödül fonksiyonu (+1/-1, görülme/zaman/duvar cezası, potansiyel tabanlı yönlendirme + terminal sıfırlama)
+- [x] Eğitim: 3 deneme (v1 zayıf yönlendirme durduruldu, v2 ödül hackleme, v3 başarılı), 3M adım, başarı %0 → %64
+- [x] Grafikler `Docs/ml/` (`ML/plot_training.py`), model `Assets/_Project/ML/Models/RatStealth.onnx`
+- [x] Değerlendirme (600 bölüm): eğitilmiş %64 başarı / %1 zaman aşımı, taban %57 / %17 → `Docs/test_results/rl_evaluation.md`
+- [x] README bölüm 10
+- [ ] (İsteğe bağlı) Politikayı ana oyundaki fareye entegre etmek
 
 ## Oturum Günlüğü
 
@@ -162,3 +169,4 @@
 | 2026-10-29 | Bölüm 6 tamam (Ömer adına): Türkçe metinler, HUD, başlık/duraklatma/sonuç ekranları, Rebuild Scene. EditMode 41/41, PlayMode 26/26 | Bölüm 7 (ölçümler) |
 | 2026-10-29 | Bölüm 7 tamam (Hüseyin). Senaryo koşucusu prompt enjeksiyonu açığını buldu → `ManipulationGuard`. Hakaret/tehdit ayrımı prompt'a eklendi, saldırı sınırı 40→30 | Bölüm 8 (build + README) |
 | 2026-10-29 | Build + README tamam. Kalan: elle tam oynanış, teslim zip'i, (isteğe bağlı) Windows build ve ML-Agents bonusu | Teslim hazırlığı |
+| 2026-10-29 | Gece: ML-Agents bonusu (Ömer) ve uçtan uca oynanış testi (Hüseyin). Notlar: eğitim build'i alınırken MCP build işi domain reload'da kayboluyor (build yine tamamlanıyor); çıkarım cihazı `Burst` olmalı (ComputeShader tensörleri okunamıyor); Mac uykuya geçmesin diye eğitim `caffeinate` ile | Son kontroller, teslim zip'i |
