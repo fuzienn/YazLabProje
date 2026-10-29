@@ -5,7 +5,10 @@
         "DungeonEscape.Runtime",
         "DungeonEscape.Tests.PlayMode",
         "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "UnityEditor.TestRunner",
+        "DungeonEscape.ML",
+        "Unity.ML-Agents",
+        "Unity.InferenceEngine"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
