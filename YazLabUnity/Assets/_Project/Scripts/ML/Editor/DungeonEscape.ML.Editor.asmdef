@@ -1,0 +1,24 @@
+{
+    "name": "DungeonEscape.ML.Editor",
+    "rootNamespace": "DungeonEscape.ML.Editor",
+    "references": [
+        "DungeonEscape.ML",
+        "DungeonEscape.Runtime",
+        "DungeonEscape.Editor",
+        "Unity.ML-Agents",
+        "Unity.InferenceEngine",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Universal.2D.Runtime"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
